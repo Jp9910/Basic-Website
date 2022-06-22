@@ -10,6 +10,8 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 // In the URL -> http://localhost
 // The output -> Index
 get('/', 'resources/views/index.html');
+get('/home', 'resources/views/home.html');
+get('/teste', 'src/teste.php');
 
 // Dynamic GET. Example with 1 variable
 // The $id will be available in user.php

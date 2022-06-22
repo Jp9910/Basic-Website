@@ -14,4 +14,4 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www/html
 
-#ENTRYPOINT ["php","-S","0.0.0.0:80"]
+#ENTRYPOINT ["service","apache2","start"]
