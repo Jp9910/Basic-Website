@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  app:
+    image: avaliacao
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+
+  db:
+    image: mysql
+    ports:
+      - "8081:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: "db"
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
