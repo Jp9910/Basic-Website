@@ -6,22 +6,16 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 // ##################################################
 // ##################################################
 
-//---require_once('src/domain/controllers/UsuarioController.php');
 require_once 'vendor/autoload.php';
-// $func = 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario';
-// if(is_callable($func))
-//     echo 'ok';
-// else echo 'erro';
-// exit();
 
 // Static GET
 // In the URL -> http://localhost
 // The output -> Index
-post('/users', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
+post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 get('/', 'resources/views/index.html');
 get('/home', 'resources/views/home.html');
-get('/teste', 'src/teste.php');
-//post('/users', 'src/domain/controllers/UsuarioController.php');
+get('/teste', 'src/teste2.php');
+get('/usuarios', 'resources/views/lista-usuarios.php');
 delete('/users/$id', 'src/domain/controllers/usuarioController.php');
 
 // Dynamic GET. Example with 1 variable
