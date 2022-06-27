@@ -5,7 +5,7 @@ namespace Jp\SindicatoTrainees\infra\dao;
 require_once 'vendor/autoload.php';
 
 use PDO;
-use Jp\SindicatoTrainees\domain\Models\Usuario;
+use Jp\SindicatoTrainees\domain\models\Usuario;
 use Jp\SindicatoTrainees\domain\dao\UsuarioDao;
 
 class UsuarioPdoDao implements UsuarioDao
@@ -13,7 +13,7 @@ class UsuarioPdoDao implements UsuarioDao
 
     private PDO $con;
 
-    public function __construct($connection)
+    public function __construct(PDO $connection)
     {
         //dependency injection
         $this->con = $connection;
@@ -23,37 +23,45 @@ class UsuarioPdoDao implements UsuarioDao
     {
         $sql = 'SELECT * FROM uso_usuarios';
         $stmt = $this->con->query($sql);
-        return $this->hydrateUsuarios($stmt);
+        return $this->loadUsuarios($stmt);
     }
-    public function findById(): Usuario
+    public function findById(int $id): Usuario
     {
-        return new Usuario(null,'nomeUsuario', 'loginUsuario');
+        $query = 'SELECT * FROM uso_usuarios WHERE uso_id = ?';
+        $stmt = $this->con->prepare($query);
+        $stmt->bindValue(1, $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha');
     }
     public function search(...$params): Usuario
     {
-        return new Usuario(null,'nomeUsuario', 'loginUsuario');
+        return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha');
     }
-    public function insert(): bool
+    public function insert(Usuario $usuario): bool
+    {
+
+        $this->con->beginTransaction();
+        return true;
+        $this->con->commit();
+    }
+    public function update(Usuario $usuario): bool
     {
         return true;
     }
-    public function update(): bool
+    public function delete(Usuario $usuario): bool
     {
         return true;
     }
-    public function delete(): bool
+    private function loadUsuarios(\PDOStatement $stmt): array
     {
-        return true;
-    }
-    private function hydrateUsuarios(\PDOStatement $stmt): array
-    {
-        $todosUsuarios = $stmt->fetchAll();
+        $usuarios = $stmt->fetchAll();
         $arrayDeUsuarios = [];
-        foreach ($todosUsuarios as $usuario) {
+        foreach ($usuarios as $usuario) {
                 $usuario = new Usuario(
                         $usuario['uso_id'],
                         $usuario['uso_nome'],
-                        $usuario['uso_login']
+                        $usuario['uso_login'],
+                        $usuario['uso_senha']
                 );
                 $arrayDeUsuarios[] = $usuario;
         }
