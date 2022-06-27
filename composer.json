@@ -1,0 +1,17 @@
+{
+    "name": "jp/sindicato_trainees",
+    "description": "Website em PHP e Javascript",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Jp\\SindicatoTrainees\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jp9910",
+            "email": "jops40@hotmail.com"
+        }
+    ],
+    "require": {}
+}
