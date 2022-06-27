@@ -1,32 +1,31 @@
 <?php
-
+require 'vendor/autoload.php';
 session_start();
 
-function get($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include); }  
+function get($route, $path_to_include, $func=''){
+  if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include, $func); }  
 }
-function post($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include); }    
+function post($route, $path_to_include, $func=''){
+  if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ route($route, $path_to_include, $func); }    
 }
-function put($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'PUT' ){ route($route, $path_to_include); }    
+function put($route, $path_to_include, $func=''){
+  if( $_SERVER['REQUEST_METHOD'] == 'PUT' ){ route($route, $path_to_include, $func); }    
 }
-function patch($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'PATCH' ){ route($route, $path_to_include); }    
+function patch($route, $path_to_include, $func=''){
+  if( $_SERVER['REQUEST_METHOD'] == 'PATCH' ){ route($route, $path_to_include, $func); }    
 }
-function delete($route, $path_to_include){
-  if( $_SERVER['REQUEST_METHOD'] == 'DELETE' ){ route($route, $path_to_include); }    
+function delete($route, $path_to_include, $func=''){
+  if( $_SERVER['REQUEST_METHOD'] == 'DELETE' ){ route($route, $path_to_include, $func); }    
 }
-function any($route, $path_to_include){ route($route, $path_to_include); }
-function route($route, $path_to_include){
-  
 
-  
+function any($route, $path_to_include){ route($route, $path_to_include); }
+
+function route($route, $path_to_include, $func=''){
   $ROOT = $_SERVER['DOCUMENT_ROOT'];
   if($route == "/404"){
     include_once("$ROOT/$path_to_include");
     exit();
-  }  
+  }
   $request_url = filter_var($_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL);
   $request_url = rtrim($request_url, '/');
   $request_url = strtok($request_url, '?');
@@ -55,15 +54,22 @@ function route($route, $path_to_include){
   if( is_callable($path_to_include) ){
     call_user_func($path_to_include);
     exit();
+  }
+  if( is_callable($func) ){
+    call_user_func($func);
+    exit();
   }    
   include_once("$ROOT/$path_to_include");
   exit();
 }
+
 function out($text){echo htmlspecialchars($text);}
+
 function set_csrf(){
   if( ! isset($_SESSION["csrf"]) ){ $_SESSION["csrf"] = bin2hex(random_bytes(50)); }
   echo '<input type="hidden" name="csrf" value="'.$_SESSION["csrf"].'">';
 }
+
 function is_csrf_valid(){
   if( ! isset($_SESSION['csrf']) || ! isset($_POST['csrf'])){ return false; }
   if( $_SESSION['csrf'] != $_POST['csrf']){ return false; }
