@@ -2,58 +2,60 @@
 
 namespace Jp\SindicatoTrainees\domain\models;
 
-use Jp\SindicatoTrainees\domain\controllers\UsuarioController;
 use JsonSerializable;
 
+/**
+ * @version 1.0.0 Versionamento inicial da classe
+ */
 class Usuario implements JsonSerializable
 {
-    private ?int $id;
-    private string $nome;
-    private string $login;
-    private string $senha;
+	private ?int $id;
+	private string $sNome;
+	private string $sLogin;
+	private string $sSenha;
 
-    public function __construct(?int $id, string $nome, string $login, string $senha)
-    {
-        $this->id = $id;
-        $this->nome = $nome;
-        $this->login = $login;
-        $this->senha = $senha;
-    }
+	public function __construct(?int $id, string $sNome, string $sLogin, string $sSenha)
+	{
+		$this->id = $id;
+		$this->sNome = $sNome;
+		$this->sLogin = $sLogin;
+		$this->sSenha = $sSenha;
+	}
 
-    public function jsonSerialize(): mixed
-    {
-        return [
-            'id' => $this->id(),
-            'nome' => $this->nome(),
-            'login' => $this->login()
-        ];
-    }
+	public function jsonSerialize(): mixed
+	{
+		return [
+			'id' => $this->id(),
+			'nome' => $this->sNome(),
+			'login' => $this->sLogin()
+		];
+	}
 
-    public function id(): ?int
-    {
-        return $this->id;
-    }
+	public function id(): ?int
+	{
+		return $this->id;
+	}
 
-    public function nome(): string
-    {
-        return $this->nome;
-    }
+	public function sNome(): string
+	{
+		return $this->sNome;
+	}
 
-    public function login(): string
-    {
-        return $this->login;
-    }
+	public function sLogin(): string
+	{
+		return $this->sLogin;
+	}
 
-    public function senha(): string
-    {
-        return $this->senha;
-    }
+	public function sSenha(): string
+	{
+		return $this->sSenha;
+	}
 
-    public function defineId(int $id): void
-    {
-        if (!is_null($this->id)) {
-            throw new \DomainException('Você só pode definir o ID uma vez');
-        }
-        $this->id = $id;
-    }
+	public function defineId(int $id): void
+	{
+		if (!is_null($this->id)) {
+			throw new \DomainException('Você só pode definir o ID uma vez');
+		}
+		$this->id = $id;
+	}
 }

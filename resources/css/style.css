@@ -1,85 +1,85 @@
 .botao {
-    margin: 5px;
+	margin: 5px;
 }
 
 .invisivel {
-    display: none;
+	display: none;
 }
 
 /* .frase {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 #campo-digitacao {
-    font-size: 20px;
-    height: 130px;
-    border: 3px solid black;
+	font-size: 20px;
+	height: 130px;
+	border: 3px solid black;
 }
 
 .campo-desabilitado {
-    background-color: lightgrey;
+	background-color: lightgrey;
 }
 
 .icone {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .borda-vermelha {
-    border: 10px solid red;
+	border: 10px solid red;
 }
 
 .borda-verde {
-    border: 10px solid green;
+	border: 10px solid green;
 }
 
 .botao {
-    margin: 3px;
+	margin: 3px;
 }
 
 .placar {
-    display: none;
+	display: none;
 }
 
 body {
-    overflow: scroll;
+	overflow: scroll;
 }
 
 .erro {
-    color: red;
-    display: none;
+	color: red;
+	display: none;
 }
 
 .info {
-    font-size: 20px;
-    color:rgb(0, 128, 90);
-    display: none;
+	font-size: 20px;
+	color:rgb(0, 128, 90);
+	display: none;
 }
 
 #spinner{
-    display: none;
+	display: none;
 }
 
 #frase-id{
-    width: 40px;
+	width: 40px;
 }
 
 #botao-salvar-placar{
-    float: right;
+	float: right;
 }
 
 #botao-placar{
-    float: right;
+	float: right;
 }
 
 .select-usuarios {
-    display: inline-block;
+	display: inline-block;
 }
 
 #usuarios {
-    display: block;
+	display: block;
 }
 
 .selectize-input {
-    width: 150px;
-    vertical-align: middle;
+	width: 150px;
+	vertical-align: middle;
 } */
