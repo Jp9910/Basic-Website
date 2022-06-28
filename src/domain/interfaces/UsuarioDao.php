@@ -1,6 +1,6 @@
 <?php
 
-namespace Jp\SindicatoTrainees\domain\dao;
+namespace Jp\SindicatoTrainees\domain\interfaces;
 
 use Jp\SindicatoTrainees\domain\models\Usuario;
 

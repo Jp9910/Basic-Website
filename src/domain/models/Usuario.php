@@ -3,8 +3,9 @@
 namespace Jp\SindicatoTrainees\domain\models;
 
 use Jp\SindicatoTrainees\domain\controllers\UsuarioController;
+use JsonSerializable;
 
-class Usuario
+class Usuario implements JsonSerializable
 {
     private ?int $id;
     private string $nome;
@@ -17,6 +18,15 @@ class Usuario
         $this->nome = $nome;
         $this->login = $login;
         $this->senha = $senha;
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'id' => $this->id(),
+            'nome' => $this->nome(),
+            'login' => $this->login()
+        ];
     }
 
     public function id(): ?int
