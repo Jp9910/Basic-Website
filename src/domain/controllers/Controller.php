@@ -11,7 +11,7 @@ abstract class Controller
      * @param  array  $parameters
      *
      */
-    public static function callAction($method, $parameters)
+    public function callAction($method, $parameters)
     {
         return $method(...array_values($parameters));
     }

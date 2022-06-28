@@ -17,11 +17,11 @@ function montarTabelaUsuarios(data, textStatus, jqXHR)
 	console.log(data);
 	console.log(textStatus);
 	console.log(jqXHR);
-	let tbody = $('tbody');
+	let $tbody = $('tbody');
 	$.each(data, function(){
 		let linha = novaLinha(this);
 		linha.find('.botao-editar').on('click')
-		tbody.append(linha);
+		$tbody.append(linha);
 	})
 }
 
