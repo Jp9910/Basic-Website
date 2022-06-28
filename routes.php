@@ -11,15 +11,20 @@ require_once 'vendor/autoload.php';
 // Static GET
 // In the URL -> http://localhost
 // The output -> Index
-post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 get('/', 'resources/views/index.html');
 get('/home', 'resources/views/home.html');
 get('/teste', 'src/teste2.php');
 delete('/users/$id', 'src/domain/controllers/UsuarioController.php');
 
+// LOGIN
+get('/login', 'resources/views/login.html');
+
 // USUARIOS
 get('/usuarios', 'src/api/usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
 get('/listar-usuarios', 'resources/views/lista-usuarios.html');
+
+
+//chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 
 // Dynamic GET. Example with 1 variable
 // The $id will be available in user.php
