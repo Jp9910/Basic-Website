@@ -1,15 +1,3 @@
-<?php
-namespace Jp\SindicatoTrainees\resources\views;
-require_once 'vendor/autoload.php';
-
-use Jp\SindicatoTrainees\infra\dao\UsuarioPdoDao;
-use Jp\SindicatoTrainees\infra\DBConnector;
-
-$pdo = DBConnector::createConnection();
-$dao = new UsuarioPdoDao($pdo);
-$usuarios = $dao->getAll();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,19 +16,20 @@ $usuarios = $dao->getAll();
             <thead>
                 <th>Nome</th>
                 <th>Login</th>
-                <th>Editar</th>
+                <th></th>
             </thead>
             <tbody>
-                <!-- montar a tabela dinamicamente usando javascript? --> 
+                <!-- montar a tabela dinamicamente usando javascript --> 
+
+                <!-- pegar as variáveis usando ajax (get endpoint usuarios)--> 
             </tbody>
         </table>
     </section>
     <ul class="center">
-        <?php foreach($usuarios as $usu){ ?>
-            <li><?php echo $usu->nome(); ?></li>
-        <?php } ?>
+            <li class="usuario"></li>
     </ul>
     <script src="resources/libs/jquery-3.6.0.js"></script>
     <script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
+    <script src="resources/js/lista-usuarios.js"></script>
 </body>
 </html>
