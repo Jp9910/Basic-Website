@@ -15,8 +15,11 @@ post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioContro
 get('/', 'resources/views/index.html');
 get('/home', 'resources/views/home.html');
 get('/teste', 'src/teste2.php');
-get('/usuarios', 'resources/views/lista-usuarios.php');
-delete('/users/$id', 'src/domain/controllers/usuarioController.php');
+delete('/users/$id', 'src/domain/controllers/UsuarioController.php');
+
+// USUARIOS
+get('/usuarios', 'src/api/usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
+get('/listar-usuarios', 'resources/views/lista-usuarios.html');
 
 // Dynamic GET. Example with 1 variable
 // The $id will be available in user.php

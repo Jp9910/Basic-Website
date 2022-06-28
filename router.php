@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+
 session_start();
 
 function get($route, $path_to_include, $func=''){
