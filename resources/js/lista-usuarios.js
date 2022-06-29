@@ -1,6 +1,8 @@
 //fazer requisição ajax para recuperar os dados necessários
 
-getUsuariosAjax();
+$(document).ready(function () {
+	getUsuariosAjax();
+});
 
 function getUsuariosAjax(){
 	$.get("usuarios", montarTabelaUsuarios, "json");
