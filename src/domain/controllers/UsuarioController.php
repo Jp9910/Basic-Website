@@ -30,13 +30,43 @@ class UsuarioController extends Controller
 		return $loUsuarios;
 	}
 
+	public function login(string $usuario, string $senha): string
+	{
+		$rPdo = DBConnector::createConnection();
+		$rDao = new UsuarioPdoDao($rPdo);
+		$oUsuario = $rDao->searchLogin($usuario, $senha);
+		if (isset($oUsuario)) {
+			$result = [
+				'status' => 200,
+				'status_text' => 'success'
+			];
+		} else {
+			$result = [
+				'status' => 400,
+				'status_text' => 'Bad Request'
+			];
+		}
+		return json_encode($result);
+	}
+
 	/*
 	* @TODO
 	*/
 	public function criarUsuario()
 	{
-		echo 'ok';
-		//criar conexao com o banco de dados e inserir um novo administrador
+		echo 'usuario: ';
+		echo htmlspecialchars($_REQUEST['usuario'] . PHP_EOL);
+		echo 'senha: ';
+		echo htmlspecialchars($_REQUEST['senha'] . PHP_EOL);
+		//criar conexao com o banco de dados e inserir um novo usuario
+		$rPdo = DBConnector::createConnection();
+		$rDao = new UsuarioPdoDao($rPdo);
+		//$rDao->insert($usuario, $senha);
+		$result = [
+			'status' => 200,
+			'status_text' => 'success'
+		];
+		return json_encode($result);
 	}
 
 	/**

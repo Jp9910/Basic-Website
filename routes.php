@@ -18,11 +18,11 @@ delete('/users/$id', 'src/domain/controllers/UsuarioController.php');
 
 // LOGIN
 get('/login', 'resources/views/login.html');
+post('/criar-sessao', 'src/api/post-login.php');
 
 // USUARIOS
-get('/usuarios', 'src/api/usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
+get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
 get('/listar-usuarios', 'resources/views/lista-usuarios.html');
-
 
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 

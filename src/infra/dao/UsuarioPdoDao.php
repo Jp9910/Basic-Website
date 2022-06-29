@@ -38,7 +38,26 @@ class UsuarioPdoDao implements UsuarioDao
 
 	public function search(...$params): Usuario
 	{
+		$query = 'SELECT * FROM uso_usuarios WHERE :uso_id = ? 
+								and :uso_nome = ? and :uso_login = ? and :uso_senha = ?';
+		$stmt = $this->rConexao->prepare($query);
+		//$stmt->bindParam();
+		//$stmt->bindValue(1, $id, PDO::PARAM_INT);
+		//$stmt->execute();
 		return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha');
+	}
+
+	public function searchLogin(string $usuario, string $senha): ?Usuario
+	{
+		$query = 'SELECT * FROM uso_usuarios WHERE uso_login = ? and uso_senha = SHA1(?)';
+		$stmt = $this->rConexao->prepare($query);
+		$stmt->bindValue(1, $usuario, PDO::PARAM_STR);
+		$stmt->bindValue(2, $senha, PDO::PARAM_STR);
+		$stmt->execute();
+		$oUsuario = $this->loadUsuarios($stmt);
+		if (isset($oUsuario[0]))
+			return $oUsuario[0];
+		return null;
 	}
 
 	public function insert(Usuario $usuario): bool
