@@ -47,12 +47,11 @@ class UsuarioPdoDao implements UsuarioDao
 		return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha');
 	}
 
-	public function searchLogin(string $usuario, string $senha): ?Usuario
+	public function searchLogin(string $usuario): ?Usuario
 	{
-		$query = 'SELECT * FROM uso_usuarios WHERE uso_login = ? and uso_senha = SHA1(?)';
+		$query = 'SELECT * FROM uso_usuarios WHERE uso_login = ?';
 		$stmt = $this->rConexao->prepare($query);
 		$stmt->bindValue(1, $usuario, PDO::PARAM_STR);
-		$stmt->bindValue(2, $senha, PDO::PARAM_STR);
 		$stmt->execute();
 		$oUsuario = $this->loadUsuarios($stmt);
 		if (isset($oUsuario[0]))
@@ -60,12 +59,34 @@ class UsuarioPdoDao implements UsuarioDao
 		return null;
 	}
 
+	// public function searchLoginSenha(string $usuario, string $senha): ?Usuario
+	// {
+	// 	$query = 'SELECT * FROM uso_usuarios WHERE uso_login = ? and uso_senha = SHA1(?)';
+	// 	$stmt = $this->rConexao->prepare($query);
+	// 	$stmt->bindValue(1, $usuario, PDO::PARAM_STR);
+	// 	$stmt->bindValue(2, $senha, PDO::PARAM_STR);
+	// 	$stmt->execute();
+	// 	$oUsuario = $this->loadUsuarios($stmt);
+	// 	if (isset($oUsuario[0]))
+	// 		return $oUsuario[0];
+	// 	return null;
+	// }
+
 	public function insert(Usuario $usuario): bool
 	{
-
+		$query = "INSERT INTO uso_usuarios (uso_nome, uso_login, uso_senha) 
+					VALUES (:nome, :login, :senha)";
+		$stmt = $this->rConexao->prepare($query);
+		$nome = $usuario->sNome();
+		$login = $usuario->sLogin();
+		$senha = $usuario->sSenha();
+		$stmt->bindParam('nome', $nome, PDO::PARAM_STR);
+		$stmt->bindParam('login', $login);
+		$stmt->bindParam('senha', $senha);
 		$this->rConexao->beginTransaction();
-		return true;
+		$stmt->execute();
 		$this->rConexao->commit();
+		return true;
 	}
 
 	public function update(Usuario $usuario): bool

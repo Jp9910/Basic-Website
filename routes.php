@@ -12,7 +12,7 @@ require_once 'vendor/autoload.php';
 // In the URL -> http://localhost
 // The output -> Index
 get('/', 'resources/views/index.html');
-get('/home', 'resources/views/home.html');
+get('/home', 'resources/views/home.php');
 get('/teste', 'src/teste2.php');
 delete('/users/$id', 'src/domain/controllers/UsuarioController.php');
 
@@ -22,6 +22,8 @@ post('/criar-sessao', 'src/api/post-login.php');
 
 // USUARIOS
 get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
+get('/cadastro', 'resources/views/cadastro.html');
+post('/criar-usuario', 'src/api/post-cadastro.php');
 get('/listar-usuarios', 'resources/views/lista-usuarios.html');
 
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
