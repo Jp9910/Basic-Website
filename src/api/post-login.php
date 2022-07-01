@@ -21,6 +21,7 @@ if ($status->status === 200) {
     $_SESSION['usuario_id'] = $status->usuario->id;
     $_SESSION['usuario_login'] = $status->usuario->login;
     $_SESSION['usuario_nome'] = $status->usuario->nome;
+    $_SESSION['usuario_isAdmin'] = $status->usuario->isAdmin;
     $_SESSION['logado'] = true;
     header("Location: /home");
     die();
