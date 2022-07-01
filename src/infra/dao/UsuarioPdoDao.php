@@ -33,7 +33,8 @@ class UsuarioPdoDao implements UsuarioDao
 		$stmt = $this->rConexao->prepare($query);
 		$stmt->bindValue(1, $id, PDO::PARAM_INT);
 		$stmt->execute();
-		return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha');
+		return $this->loadUsuarios($stmt)[0];
+		//return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha', false);
 	}
 
 	public function search(...$params): Usuario
@@ -44,7 +45,7 @@ class UsuarioPdoDao implements UsuarioDao
 		//$stmt->bindParam();
 		//$stmt->bindValue(1, $id, PDO::PARAM_INT);
 		//$stmt->execute();
-		return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha');
+		return new Usuario(null,'nomeUsuario', 'loginUsuario', 'senha', false);
 	}
 
 	public function searchLogin(string $usuario): ?Usuario
@@ -72,25 +73,54 @@ class UsuarioPdoDao implements UsuarioDao
 	// 	return null;
 	// }
 
-	public function insert(Usuario $usuario): bool
+	public function insert(Usuario $oUsuario): bool
 	{
-		$query = "INSERT INTO uso_usuarios (uso_nome, uso_login, uso_senha) 
-					VALUES (:nome, :login, :senha)";
+		$query = "INSERT INTO uso_usuarios (uso_nome, uso_login, uso_senha, uso_isAdmin) 
+					VALUES (:nome, :login, :senha, :isAdmin)";
 		$stmt = $this->rConexao->prepare($query);
-		$nome = $usuario->sNome();
-		$login = $usuario->sLogin();
-		$senha = $usuario->sSenha();
+		$nome = $oUsuario->sNome();
+		$login = $oUsuario->sLogin();
+		$senha = $oUsuario->sSenha();
+		$isAdmin = $oUsuario->isAdmin();
 		$stmt->bindParam('nome', $nome, PDO::PARAM_STR);
 		$stmt->bindParam('login', $login);
 		$stmt->bindParam('senha', $senha);
+		$stmt->bindParam('isAdmin', $isAdmin);
 		$this->rConexao->beginTransaction();
 		$stmt->execute();
 		$this->rConexao->commit();
 		return true;
 	}
 
-	public function update(Usuario $usuario): bool
-	{
+	public function update(Usuario $oUsuario): bool
+	{//checar se a senha é string vazia<
+		$senhavazia = false;
+		if (empty($oUsuario->sSenha()))
+			$senhavazia = true;
+		if ($senhavazia) {
+			$query = 'UPDATE uso_usuarios
+				SET uso_nome = :nome, uso_login = :login, uso_isAdmin = :isAdmin
+				WHERE uso_id = :id';
+		} else {
+			$query = 'UPDATE uso_usuarios
+				SET uso_nome = :nome, uso_login = :login, uso_senha = :senha, uso_isAdmin = :isAdmin
+				WHERE uso_id = :id';
+		}
+		$stmt = $this->rConexao->prepare($query);
+		$id = $oUsuario->id();
+		$nome = $oUsuario->sNome();
+		$login = $oUsuario->sLogin();
+		$senha = $oUsuario->sSenha();
+		$isAdmin = $oUsuario->isAdmin();
+		$stmt->bindParam('id', $id);
+		$stmt->bindParam('nome', $nome);
+		$stmt->bindParam('login', $login);
+		if(!$senhavazia)
+			$stmt->bindParam('senha', $senha);
+		$stmt->bindParam('isAdmin', $isAdmin);
+		$this->rConexao->beginTransaction();
+		$stmt->execute();
+		$this->rConexao->commit();
 		return true;
 	}
 
@@ -122,7 +152,8 @@ class UsuarioPdoDao implements UsuarioDao
 						$usuario['uso_id'],
 						$usuario['uso_nome'],
 						$usuario['uso_login'],
-						$usuario['uso_senha']
+						$usuario['uso_senha'],
+						$usuario['uso_isAdmin']
 				);
 				$loArrayDeUsuarios[] = $usuario;
 		}

@@ -13,13 +13,15 @@ class Usuario implements JsonSerializable
 	private string $sNome;
 	private string $sLogin;
 	private string $sSenha;
+	private int $isAdmin;
 
-	public function __construct(?int $id, string $sNome, string $sLogin, string $sSenha)
+	public function __construct(?int $id, string $sNome, string $sLogin, string $sSenha, int $isAdmin)
 	{
 		$this->id = $id;
 		$this->sNome = $sNome;
 		$this->sLogin = $sLogin;
 		$this->sSenha = $sSenha;
+		$this->isAdmin = $isAdmin;
 	}
 
 	public function jsonSerialize(): mixed
@@ -27,7 +29,8 @@ class Usuario implements JsonSerializable
 		return [
 			'id' => $this->id(),
 			'nome' => $this->sNome(),
-			'login' => $this->sLogin()
+			'login' => $this->sLogin(),
+			'isAdmin' => $this->isAdmin()
 		];
 	}
 
@@ -49,6 +52,11 @@ class Usuario implements JsonSerializable
 	public function sSenha(): string
 	{
 		return $this->sSenha;
+	}
+
+	public function isAdmin(): int
+	{
+		return $this->isAdmin;
 	}
 
 	public function defineId(int $id): void

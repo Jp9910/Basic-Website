@@ -21,10 +21,15 @@ get('/login', 'resources/views/login.html');
 post('/criar-sessao', 'src/api/post-login.php');
 
 // USUARIOS
+get('/usuario/$id', 'src/api/get-usuarioById.php');
 get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
 get('/cadastro', 'resources/views/cadastro.html');
-post('/criar-usuario', 'src/api/post-cadastro.php');
 get('/listar-usuarios', 'resources/views/lista-usuarios.html');
+// usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
+get('/editar-usuario', 'resources/views/editar-usuario.html');
+post('/editar-usuario/$id', 'src/api/put-editarUsuario.php');
+post('/criar-usuario', 'src/api/post-cadastro.php');
+
 
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 

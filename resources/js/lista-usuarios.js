@@ -4,7 +4,8 @@ $(document).ready(function () {
 	getUsuariosAjax();
 });
 
-function getUsuariosAjax(){
+function getUsuariosAjax()
+{
 	$.get("usuarios", montarTabelaUsuarios, "json");
 }
 
@@ -33,7 +34,7 @@ function novaLinha(usuario)
 	let colunaNome = $('<td>').text(usuario.nome);
 	let colunaLogin = $('<td>').text(usuario.login);
 	let colunaEditar = $('<td>');
-	let link = $("<a>").attr("href","#").addClass("botao-editar");
+	let link = $("<a>").attr("href","/editar-usuario?id="+usuario.id).addClass("botao-editar");
 	let icone = $("<i>").addClass("small").addClass("material-icons").text("edit");
 	// Icone dentro do <a>
 	link.append(icone);

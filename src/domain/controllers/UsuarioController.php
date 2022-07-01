@@ -2,6 +2,7 @@
 
 namespace Jp\SindicatoTrainees\domain\controllers;
 
+use Exception;
 use Jp\SindicatoTrainees\infra\dao\UsuarioPdoDao;
 use Jp\SindicatoTrainees\infra\DBConnector;
 use Jp\SindicatoTrainees\domain\controllers\Controller;
@@ -29,6 +30,33 @@ class UsuarioController extends Controller
 		$rDao = new UsuarioPdoDao($rPdo);
 		$loUsuarios = $rDao->getAll();
 		return $loUsuarios;
+	}
+
+	public function getUsuarioById(int $id)
+	{
+		$rPdo = DBConnector::createConnection();
+		$rDao = new UsuarioPdoDao($rPdo);
+		$oUsuario = $rDao->findById($id);
+		return $oUsuario;
+	}
+
+	public function editarUsuario(int $id, string $sNome, string $sLogin, string $sSenha, int $isAdmin)
+	{
+		$rPdo = DBConnector::createConnection();
+		$rDao = new UsuarioPdoDao($rPdo);
+		if (!empty($sSenha))
+			$sSenha = password_hash($sSenha, PASSWORD_DEFAULT);
+		$oUsuario = new Usuario($id, $sNome, $sLogin, $sSenha , $isAdmin);
+		if ($rDao->update($oUsuario)) {
+			return json_encode([
+				'status' => 200,
+				'status_text' => 'success'
+			]);
+		}
+		return json_encode([
+			'status' => 500,
+			'status_text' => 'Ops, algo deu errado...'
+		]);
 	}
 
 	public function login(string $sLogin, string $sSenha): string
@@ -63,18 +91,24 @@ class UsuarioController extends Controller
 	/*
 	* @TODO
 	*/
-	public function criarUsuario(string $sNome, string $sLogin, string $sSenha)
+	public function criarUsuario(string $sNome, string $sLogin, string $sSenha, int $isAdmin)
 	{
 		//criar conexao com o banco de dados e inserir um novo usuario
+		// throw new Exception('teste');
+		// exit();
 		$rPdo = DBConnector::createConnection();
 		$rDao = new UsuarioPdoDao($rPdo);
 		$senha_hashed = password_hash($sSenha, PASSWORD_DEFAULT);
-		$rDao->insert(new Usuario(null, $sNome, $sLogin, $senha_hashed));
-		$result = [
-			'status' => 200,
-			'status_text' => 'success'
-		];
-		return json_encode($result);
+		if ($rDao->insert(new Usuario(null, $sNome, $sLogin, $senha_hashed, $isAdmin))){
+			return json_encode([
+				'status' => 200,
+				'status_text' => 'success'
+			]);
+		}
+		return json_encode([
+			'status' => 500,
+			'status_text' => 'Ops, algo deu errado...'
+		]);
 	}
 
 	/**
