@@ -11,5 +11,5 @@ interface UsuarioDao
 	public function search(...$params): Usuario;
 	public function insert(Usuario $usuario): bool;
 	public function update(Usuario $usuario): bool;
-	public function delete(Usuario $usuario): bool;
+	public function delete(int $id): bool;
 }

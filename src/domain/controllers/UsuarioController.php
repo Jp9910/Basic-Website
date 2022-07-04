@@ -114,8 +114,19 @@ class UsuarioController extends Controller
 	/**
 	 * @TODO
 	 */
-	public function deletarUsuario()
+	public function deletarUsuario(int $id)
 	{
-
+		$rPdo = DBConnector::createConnection();
+		$rDao = new UsuarioPdoDao($rPdo);
+		if ($rDao->delete($id)) {
+			return json_encode([
+				'status' => 200,
+				'status_text' => 'success'
+			]);
+		}
+		return json_encode([
+			'status' => 500,
+			'status_text' => 'Ops, algo deu errado...'
+		]);
 	}
 }

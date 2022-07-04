@@ -93,7 +93,7 @@ class UsuarioPdoDao implements UsuarioDao
 	}
 
 	public function update(Usuario $oUsuario): bool
-	{//checar se a senha é string vazia<
+	{
 		$senhavazia = false;
 		if (empty($oUsuario->sSenha()))
 			$senhavazia = true;
@@ -124,8 +124,12 @@ class UsuarioPdoDao implements UsuarioDao
 		return true;
 	}
 
-	public function delete(Usuario $usuario): bool
+	public function delete(int $id): bool
 	{
+		$query = 'DELETE FROM uso_usuarios WHERE uso_id = :id';
+		$stmt = $this->rConexao->prepare($query);
+		$stmt->bindParam('id', $id);
+		$stmt->execute();
 		return true;
 	}
 

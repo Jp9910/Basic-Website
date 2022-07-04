@@ -15,6 +15,16 @@
 	max-height: 50px;
 }
 
+.info {
+    font-size: 20px;
+    color:rgb(0, 128, 90);
+    display: none;
+}
+
+#spinner{
+	display: none;
+}
+
 /* .frase {
 	font-size: 20px;
 }
@@ -61,10 +71,6 @@ body {
 .info {
 	font-size: 20px;
 	color:rgb(0, 128, 90);
-	display: none;
-}
-
-#spinner{
 	display: none;
 }
 

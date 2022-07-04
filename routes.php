@@ -11,18 +11,18 @@ require_once 'vendor/autoload.php';
 // Static GET
 // In the URL -> http://localhost
 // The output -> Index
-get('/', 'resources/views/index.html');
+get('/', 'resources/views/home.php');
 get('/home', 'resources/views/home.php');
-get('/teste', 'src/teste2.php');
-delete('/users/$id', 'src/domain/controllers/UsuarioController.php');
+get('/teste', 'src/teste.php');
 
 // LOGIN
 get('/login', 'resources/views/login.html');
 post('/criar-sessao', 'src/api/post-login.php');
 
 // USUARIOS
-get('/usuario/$id', 'src/api/get-usuarioById.php');
 get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
+get('/usuario/$id', 'src/api/get-usuarioById.php');
+delete('/usuario/$id', 'src/api/delete-excluirUsuario.php');
 get('/cadastro', 'resources/views/cadastro.html');
 get('/listar-usuarios', 'resources/views/lista-usuarios.html');
 // usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?

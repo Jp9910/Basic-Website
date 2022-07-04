@@ -14,8 +14,18 @@ $(document).ready(function () {
 function adicionarFuncaoBotaoExcluir()
 {
     $('#botao-excluir').click(function() {
-        //chamar api para excluir usuario
-        console.log(3);
+        $.ajax({
+            url: "usuario/"+params.id,
+            type: 'DELETE',
+            success: function(result) {
+                $('#p-info').text('Usuário excluido. Redirecionando...');
+                $('#p-info').show();
+                $('#spinner').show();
+                setTimeout(function(){
+                    window.location.replace("/listar-usuarios")
+                }, 3000)
+            }
+        });
     });
 }
 
