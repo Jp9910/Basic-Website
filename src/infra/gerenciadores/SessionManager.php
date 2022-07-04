@@ -1,6 +1,6 @@
 <?php
 
-namespace Jp\SindicatoTrainees\infra;
+namespace Jp\SindicatoTrainees\infra\gerenciadores;
 
 class SessionManager {
 

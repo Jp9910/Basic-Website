@@ -7,7 +7,7 @@
 namespace Jp\SindicatoTrainees\api;
 
 use Jp\SindicatoTrainees\domain\controllers\UsuarioController;
-use Jp\SindicatoTrainees\infra\SessionManager;
+use Jp\SindicatoTrainees\infra\gerenciadores\SessionManager;
 
 //header('Content-Type: application/json');
 
