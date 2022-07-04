@@ -20,7 +20,7 @@ class RequestManager {
         return self::$instance;
     }
 
-    public function getSessao(): array
+    public function getRequest(): array
     {
         return $_REQUEST;
     }
