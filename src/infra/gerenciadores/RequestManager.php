@@ -29,4 +29,9 @@ class RequestManager {
     {
         $_REQUEST[$key] = $value;
     }
+
+    public function getRequestVariable(string $key): string
+    {
+        return $_REQUEST[$key];
+    }
 }

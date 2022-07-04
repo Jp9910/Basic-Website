@@ -23,11 +23,12 @@ post('/criar-sessao', 'src/api/post-login.php');
 get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
 get('/usuario/$id', 'src/api/get-usuarioById.php');
 delete('/usuario/$id', 'src/api/delete-excluirUsuario.php');
+put('/usuario/$id', 'src/api/put-editarUsuario.php');
+
 get('/cadastro', 'resources/views/cadastro.html');
 get('/listar-usuarios', 'resources/views/lista-usuarios.html');
 // usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
 get('/editar-usuario', 'resources/views/editar-usuario.html');
-post('/editar-usuario/$id', 'src/api/put-editarUsuario.php');
 post('/criar-usuario', 'src/api/post-cadastro.php');
 
 

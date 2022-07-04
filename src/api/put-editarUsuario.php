@@ -4,26 +4,34 @@ namespace Jp\SindicatoTrainees\api;
 
 use Exception;
 use Jp\SindicatoTrainees\domain\controllers\UsuarioController;
+use Jp\SindicatoTrainees\infra\gerenciadores\RequestManager;
 
-// if (!isset($_REQUEST['_method']) or $_REQUEST['_method'] !== 'put') {
-//     //header("Location: /404");
-//     throw new Exception('Apenas método put é permitido');
-//     exit();
-// }
+// Processar os parâmetros usando a URL. Em vez disso, usarei o RequestManager
+// para pegar os parâmetros pela global $_REQUEST
+    // Initialize URL to the variable
+    // $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    // $url_components = parse_url($url);
+    // parse_str($url_components['query'], $params);
+    // var_dump($params);
+    // var_dump($_REQUEST);
+    // exit();
 
-// Initialize URL to the variable
-$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$url_components = parse_url($url);
-// parse_str($url_components['query'], $params);
-// var_dump($params);
+$requestManager = RequestManager::getInstance();
+$request = $requestManager->getRequest();
+
+// $rv = $requestManager->getRequestVariable('name');
+// echo $rv;
+// $request['asdf'] = 'asdf';
+// var_dump($request);
+// var_dump($_REQUEST);exit();
 
 $oController = new UsuarioController();
 $sResultadoJson = $oController->editarUsuario(
     $id,
-    $_REQUEST['nome'],
-    $_REQUEST['login'],
-    $_REQUEST['senha'],
-    $_REQUEST['tipo_usuario']
+    $request['nome'],
+    $request['login'],
+    $request['senha'],
+    $request['tipo_usuario']
 );
 
 //var_dump($usuarios);
