@@ -7,6 +7,7 @@
 namespace Jp\SindicatoTrainees\api;
 
 use Jp\SindicatoTrainees\domain\controllers\UsuarioController;
+use Jp\SindicatoTrainees\infra\SessionManager;
 
 //header('Content-Type: application/json');
 
@@ -14,17 +15,20 @@ $oController = new UsuarioController();
 $json = $oController->login($_REQUEST['login'], $_REQUEST['senha']);
 
 $status = json_decode($json);
-session_destroy();
-session_start();
+
 if ($status->status === 200) {
-    $_SESSION = array(); // Unset all of the session variables
-    $_SESSION['usuario_id'] = $status->usuario->id;
-    $_SESSION['usuario_login'] = $status->usuario->login;
-    $_SESSION['usuario_nome'] = $status->usuario->nome;
-    $_SESSION['usuario_isAdmin'] = $status->usuario->isAdmin;
-    $_SESSION['logado'] = true;
+    $sessionManager = SessionManager::getInstance();
+    $sessionManager->endSessao();
+    $sessionManager->startSessao();
+    $sessionManager->setSessionVariable('usuario_id', $status->usuario->id);
+    $sessionManager->setSessionVariable('usuario_login', $status->usuario->login);
+    $sessionManager->setSessionVariable('usuario_nome', $status->usuario->nome);
+    $sessionManager->setSessionVariable('usuario_isAdmin', $status->usuario->isAdmin);
+    $sessionManager->setSessionVariable('logado', true);
+    //$sessao = $sessionManager->getSessao();
+    //var_dump($sessao);
     header("Location: /home");
-    die();
+    exit();
 }
 var_dump($status);
 var_dump($_SESSION);
