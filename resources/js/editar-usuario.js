@@ -20,35 +20,35 @@ function adicionarFuncaoBotaoEnviar()
         let senha = $('#input-senha').val();
         let isAdmin = $("input[type='radio'][name='tipo_usuario']:checked").val();
         console.log(nome,login,senha,isAdmin);
-        $.ajax({
+        let request = $.ajax({
             url: "usuario/"+params.id,
             type: 'PUT',
             data: {
-                //não está aparecendo no $_REQUEST ?
                 nome: nome,
                 login: login,
                 senha: senha,
                 tipo_usuario: isAdmin
             },
+            // application/json; charset=utf-8
+            // contentType: "application/x-www-form-urlencoded",
+            // dataType: "json",
             success: function(result) {
                 $('#teste').append(result);
                 $('#p-info').text('Usuário alterado. Recarregando página...');
                 $('#p-info').show();
                 $('#spinner').show();
                 setTimeout(function(){
-                    //window.location.replace(window.location.href)
+                    window.location.replace(window.location.href)
                 }, 3000)
             }
-        })  .done(function() {
+        }).done(function() {
             console.log( "success" );
-          })
-          .fail(function() {
+        }).fail(function() {
             console.log( "error" );
-          })
-          .always(function() {
+        }).always(function() {
             console.log( "complete" );
-          });
-         ;
+        });
+        console.log(request);
     });
 }
 
