@@ -20,18 +20,36 @@ get('/login', 'resources/views/login.html');
 post('/criar-sessao', 'src/api/post-login.php');
 
 // USUARIOS
-get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
-get('/usuario/$id', 'src/api/get-usuarioById.php');
-delete('/usuario/$id', 'src/api/delete-excluirUsuario.php');
-put('/usuario/$id', 'src/api/put-editarUsuario.php');
+    // views
+    get('/cadastro', 'resources/views/cadastro.html');
+    get('/listar-usuarios', 'resources/views/lista-usuarios.html');
+    //?usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
+    get('/editar-usuario', 'resources/views/editar-usuario.html');
+    // api
+    get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
+    get('/usuario/$id', 'src/api/get-usuarioById.php');
+    post('/criar-usuario', 'src/api/post-cadastro.php');
+    put('/usuario/$id', 'src/api/put-editarUsuario.php');
+    delete('/usuario/$id', 'src/api/delete-excluirUsuario.php');
 
-get('/cadastro', 'resources/views/cadastro.html');
-get('/listar-usuarios', 'resources/views/lista-usuarios.html');
-// usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
-get('/editar-usuario', 'resources/views/editar-usuario.html');
-post('/criar-usuario', 'src/api/post-cadastro.php');
 
+// NAVBAR
 get('/navbar','resources/views/navbar.php');
+
+// EMPRESA
+    // views
+    get('/empresas', 'resources/views/empresa/empresa.html');
+    get('/editar-empresa', 'resources/views/empresa/editar-empresa.html');
+    // api
+    get('/lista-empresas', 'src/api/empresa/get-empresas.php');
+    get('/empresa', 'src/api/empresa/get-empresaById.php');
+    post('/empresa', 'src/api/empresa/post-empresa.php');
+    put('/empresa', 'src/api/empresa/put-empresa.php');
+    delete('/empresa', 'src/api/empresa/delete-empresa.php');
+
+
+// CARGO
+
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 
 // Dynamic GET. Example with 1 variable

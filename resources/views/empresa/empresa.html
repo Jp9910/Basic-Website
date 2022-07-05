@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa</title>
+    <link rel="icon" href="resources/img/indice.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+</head>
+<body>
+    <div id="navbar"></div>
+    <h4 class="center">Adicionar Empresa</h4>
+    <div class="row">
+		<form class="col s12" action="/adicionar-empresa" method="post">
+			<div class="row">
+				<div class="input-field col s6 offset-s3">
+					<i class="material-icons prefix">house</i>
+					<input placeholder="MoobiTech" id="input-nome" name="nome" type="text" class="validate">
+					<label for="first_name">Nome</label>
+				</div>
+			</div>
+            <div class="center-align">
+				<button id="botao-enviar" type="button" class="btn waves-effect waves-light">
+					Adicionar
+					<i class="material-icons right">arrow_right</i>
+				</button>
+			</div>
+		</form>
+        <table class="centered row col s8 offset-s2 striped responsive-table">
+			<thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Editar / Excluir</th>
+                </tr>
+			</thead>
+			<tbody>
+				<!-- montar a tabela dinamicamente usando javascript --> 
+
+				<!-- pegar as variáveis usando ajax (get endpoint usuarios)--> 
+			</tbody>
+		</table>
+	</div>
+    <script src="resources/libs/jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
+	<script type="text/javascript" src="resources/js/empresa/empresa.js"></script>
+</body>
+</html>

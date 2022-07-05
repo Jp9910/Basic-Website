@@ -25,6 +25,14 @@
 	display: none;
 }
 
+table {
+	margin: 15px;
+}
+  
+td, th {
+	border: 1px solid #dddddd;
+}
+
 /* .frase {
 	font-size: 20px;
 }
