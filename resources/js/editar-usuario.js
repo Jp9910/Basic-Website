@@ -10,6 +10,7 @@ $(document).ready(function () {
     $('form').attr('action', '/editar-usuario/'+params.id);
     adicionarFuncaoBotaoExcluir();
     adicionarFuncaoBotaoEnviar();
+    $('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
 });
 
 function adicionarFuncaoBotaoEnviar()

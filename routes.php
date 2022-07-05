@@ -31,7 +31,7 @@ get('/listar-usuarios', 'resources/views/lista-usuarios.html');
 get('/editar-usuario', 'resources/views/editar-usuario.html');
 post('/criar-usuario', 'src/api/post-cadastro.php');
 
-
+get('/navbar','resources/views/navbar.php');
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 
 // Dynamic GET. Example with 1 variable

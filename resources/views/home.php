@@ -11,19 +11,7 @@
 	<link rel="icon" href="resources/img/indice.png">
 </head>
 <body class="teal accent-2">
-	<nav>
-		<div class="nav-wrapper">
-			<a href="/" class="brand-logo left">
-				<!-- <span src="/resources/img/sample-logo.png" ></span> -->
-				<img src="/resources/img/sample-logo.png" alt="logo" id="img-logo">
-			</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="listar-usuarios">Usuários do Sistema</a></li>
-				<li><a href="badges.html">Empresas</a></li>
-				<li><a href="collapsible.html">Filiados</a></li>
-			</ul>
-		</div>
-	</nav>
+	<div id="navbar"></div>
 
 	<header>
 		<div class="container">
@@ -36,5 +24,6 @@
 
 	<script src="resources/libs/jquery-3.6.0.js"></script>
 	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
+	<script type="text/javascript"> $('#navbar').load('/navbar'); </script>
 </body>
 </html>
