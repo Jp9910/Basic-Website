@@ -61,14 +61,13 @@ $sResultadoJson = $oController->editarUsuario(
 // https://stackoverflow.com/questions/9597052/how-to-retrieve-request-payload
 
 // Enviar resposta
-    // header("HTTP/1.1 200 OK");
-
-    // $httpStatusCode = 521;
-    // $httpStatusMsg  = 'Web server is down';
-    // $phpSapiName    = substr(php_sapi_name(), 0, 3);
-    // if ($phpSapiName == 'cgi' || $phpSapiName == 'fpm') {
-    //     header('Status: '.$httpStatusCode.' '.$httpStatusMsg);
-    // } else {
-    //     $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0';
-    //     header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
-    // }
+// header("HTTP/1.1 200 OK");
+$httpStatusCode = 200;
+$httpStatusMsg  = 'Usuario Editado.';
+$phpSapiName    = substr(php_sapi_name(), 0, 3);
+if ($phpSapiName == 'cgi' || $phpSapiName == 'fpm') {
+    header('Status: '.$httpStatusCode.' '.$httpStatusMsg);
+} else {
+    $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.1';
+    header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
+}
