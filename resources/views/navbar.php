@@ -19,13 +19,17 @@ $sessao = SessionManager::getInstance()->getSessao();
 				<img src="/resources/img/sample-logo.png" alt="logo" id="img-logo">
 			</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<?php if (!isset($sessao['logado']) or $sessao['logado'] === false): ?>
-					<li><a href="login">Login</a></li>
-				<?php else: ?><li><a href="teste">teste logout</a></li>
-				<?php endif; ?>
-				<?php if (isset($sessao['usuario_isAdmin']) and $sessao['usuario_isAdmin'] === 1): ?>
-					<li><a href="cadastro">Cadastrar Usuário</a></li>
-					<li><a href="listar-usuarios">Ver Usuários do Sistema</a></li>
+				<?php if (isset($sessao['logado']) and $sessao['logado'] === true): ?>
+					<li><a href="empresas">Empresas</a>
+					<li><a href="cargo">Cargos</a>
+					<li><a href="situacao">Situação</a>
+					<li><a href="teste">Teste logout</a>
+					<?php if (isset($sessao['usuario_isAdmin']) and $sessao['usuario_isAdmin'] === 1): ?>
+						<li><a href="cadastro">Cadastrar Usuário</a></li>
+						<li><a href="listar-usuarios">Ver Usuários do Sistema</a></li>
+					<?php endif; ?>
+				<?php else: ?>
+					<li><a href="login">Login</a></li></li>
 				<?php endif; ?>
 			</ul>
 		</div>
