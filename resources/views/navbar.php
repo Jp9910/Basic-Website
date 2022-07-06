@@ -21,7 +21,7 @@ $sessao = SessionManager::getInstance()->getSessao();
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<?php if (isset($sessao['logado']) and $sessao['logado'] === true): ?>
 					<li><a href="empresas">Empresas</a>
-					<li><a href="cargo">Cargos</a>
+					<li><a href="cargos">Cargos</a>
 					<li><a href="situacao">Situação</a>
 					<li><a href="teste">Teste logout</a>
 					<?php if (isset($sessao['usuario_isAdmin']) and $sessao['usuario_isAdmin'] === 1): ?>

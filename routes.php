@@ -49,6 +49,15 @@ get('/navbar','resources/views/navbar.php');
 
 
 // CARGO
+    // views
+    get('/cargos', 'resources/views/cargo/cargo.html');
+    get('/editar-cargo', 'resources/views/cargo/editar-cargo.html');
+    // api
+    get('/lista-cargos', 'src/api/cargo/get-cargos.php');
+    get('/cargo', 'src/api/cargo/get-cargoById.php');
+    post('/cargo', 'src/api/cargo/post-cargo.php');
+    put('/cargo', 'src/api/cargo/put-cargo.php');
+    delete('/cargo', 'src/api/cargo/delete-cargo.php');
 
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 
