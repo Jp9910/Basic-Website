@@ -21,16 +21,16 @@ post('/criar-sessao', 'src/api/post-login.php');
 
 // USUARIOS
     // views
-    get('/cadastro', 'resources/views/cadastro.html');
-    get('/listar-usuarios', 'resources/views/lista-usuarios.html');
+    get('/cadastro', 'resources/views/usuario/cadastro.html');
+    get('/listar-usuarios', 'resources/views/usuario/lista-usuarios.html');
     //?usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
-    get('/editar-usuario', 'resources/views/editar-usuario.html');
+    get('/editar-usuario', 'resources/views/usuario/editar-usuario.html');
     // api
-    get('/usuarios', 'src/api/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
-    get('/usuario/$id', 'src/api/get-usuarioById.php');
-    post('/criar-usuario', 'src/api/post-cadastro.php');
-    put('/usuario/$id', 'src/api/put-editarUsuario.php');
-    delete('/usuario/$id', 'src/api/delete-excluirUsuario.php');
+    get('/usuarios', 'src/api/usuario/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
+    get('/usuario/$id', 'src/api/usuario/get-usuarioById.php');
+    post('/criar-usuario', 'src/api/usuario/post-cadastro.php');
+    put('/usuario/$id', 'src/api/usuario/put-editarUsuario.php');
+    delete('/usuario/$id', 'src/api/usuario/delete-excluirUsuario.php');
 
 
 // NAVBAR

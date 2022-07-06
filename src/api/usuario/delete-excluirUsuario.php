@@ -7,9 +7,6 @@ use Jp\SindicatoTrainees\domain\controllers\UsuarioController;
 $oController = new UsuarioController();
 $sResultadoJson = $oController->deletarUsuario($id);
 
-// $status = json_decode($sResultadoJson);
-// if ($status->status === 200) {
-//     header("Location: /listar-usuarios");
-//     exit();
-// }
-// echo $sResultadoJson;
+// Enviar resposta
+$status = json_decode($sResultadoJson);
+header("HTTP/1.1 $status->status $status->status_text");
