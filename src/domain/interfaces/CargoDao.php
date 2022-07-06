@@ -8,7 +8,7 @@ interface CargoDao
 {
 	public function getAll(): array;
 	public function findById(int $id): Cargo;
-	public function insert(Cargo $empresa): bool;
-	public function update(Cargo $empresa): bool;
+	public function insert(Cargo $cargo): bool;
+	public function update(Cargo $cargo): bool;
 	public function delete(int $id): bool;
 }
