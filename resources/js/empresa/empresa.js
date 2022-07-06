@@ -18,7 +18,12 @@ function adicionarFuncaoBotaoAdicionarEmpresa()
             },
             success: function(result) {
                 getEmpresasAjax();
+				$('#p-info').text('Empresa "'+nome+'" adicionada.');
+                $('#p-info').show();
             }
+        }).fail(function(jqXHR, textStatus, errorThrown){
+            $('#p-info').text(textStatus + ". " + errorThrown);
+            $('#p-info').show();
         });
     });
 }

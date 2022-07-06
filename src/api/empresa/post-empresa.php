@@ -15,8 +15,4 @@ $sResultadoJson = $oController->criarEmpresa(
 );
 
 $status = json_decode($sResultadoJson);
-if ($status->status === 200) {
-    header("HTTP/1.1 200 Empresa criada.");
-} else {
-    header("HTTP/1.1 500 Ops... Algo deu errado.");
-}
+header("HTTP/1.1 $status->status $status->status_text");

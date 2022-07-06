@@ -16,4 +16,5 @@ $sResultadoJson = $oController->deletarEmpresa(
 );
 
 // Enviar resposta
-header("HTTP/1.1 200 Empresa Excluida.");
+$status = json_decode($sResultadoJson);
+header("HTTP/1.1 $status->status $status->status_text");

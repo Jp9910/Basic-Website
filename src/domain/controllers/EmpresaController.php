@@ -41,6 +41,12 @@ class EmpresaController extends Controller
 
 	public function editarEmpresa(int $id, string $sNome)
 	{
+		if (empty($sNome)) {
+            return json_encode([
+                'status' => 400,
+                'status_text' => 'Nome não pode ser vazio.'
+            ]);
+        }
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		$oEmpresa = new Empresa($id, $sNome);
@@ -61,6 +67,12 @@ class EmpresaController extends Controller
 	*/
 	public function criarEmpresa(string $sNome)
 	{
+		if (empty($sNome)) {
+            return json_encode([
+                'status' => 400,
+                'status_text' => 'Nome não pode ser vazio'
+            ]);
+        }
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		if ($rDao->insert(new Empresa(null, $sNome))){

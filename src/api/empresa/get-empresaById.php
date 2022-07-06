@@ -1,6 +1,6 @@
 <?php
 
-namespace Jp\SindicatoTrainees\api;
+namespace Jp\SindicatoTrainees\api\empresa;
 
 use Jp\SindicatoTrainees\domain\controllers\EmpresaController;
 use Jp\SindicatoTrainees\infra\gerenciadores\RequestManager;

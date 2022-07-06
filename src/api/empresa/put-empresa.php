@@ -17,4 +17,5 @@ $sResultadoJson = $oController->editarEmpresa(
 );
 
 // Enviar resposta
-header("HTTP/1.1 200 Empresa Editada.");
+$status = json_decode($sResultadoJson);
+header("HTTP/1.1 $status->status $status->status_text");

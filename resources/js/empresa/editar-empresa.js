@@ -38,8 +38,9 @@ function adicionarFuncaoBotaoEnviar()
             }
         }).done(function() {
             console.log( "success" );
-        }).fail(function() {
-            console.log( "error" );
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            $('#p-info').text(textStatus + ". " + errorThrown);
+            $('#p-info').show();
         }).always(function() {
             console.log( "complete" );
         });
