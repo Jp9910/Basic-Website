@@ -71,6 +71,18 @@ get('/navbar','resources/views/navbar.php');
     put('/situacao', 'src/api/situacao/put-situacao.php');
     delete('/situacao', 'src/api/situacao/delete-situacao.php');
 
+// FILIADO
+    // views
+    get('/cadastro-filiado', 'resources/views/filiado/cadastro-filiado.html');
+    get('/listar-filiados', 'resources/views/filiado/lista-filiados.html');
+    get('/editar-filiado', 'resources/views/filiado/editar-filiado.html');
+    // api
+    get('/filiados', 'src/api/filiado/get-filiados.php');
+    get('/filiado', 'src/api/filiado/get-filiadoById.php');
+    post('/filiado', 'src/api/filiado/post-filiado.php');
+    put('/filiado', 'src/api/filiado/put-editarFiliado.php');
+    delete('/filiado', 'src/api/filiado/delete-excluirFiliado.php');
+
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 
 // Dynamic GET. Example with 1 variable
