@@ -35,6 +35,7 @@ class FiliadoController extends Controller
 
 	public function getFiliadoById(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new FiliadoPdoDao($rPdo);
 		$oFiliado = $rDao->findById($id);
@@ -50,6 +51,14 @@ class FiliadoController extends Controller
         int $cargo,
         int $situacao
     ) {
+		$nome = filter_var($nome, FILTER_SANITIZE_SPECIAL_CHARS);
+		$telefone = filter_var($telefone, FILTER_SANITIZE_SPECIAL_CHARS);
+		$celular = filter_var($celular, FILTER_SANITIZE_SPECIAL_CHARS);
+		$empresa = filter_var($empresa, FILTER_SANITIZE_NUMBER_INT);
+		$cargo = filter_var($cargo, FILTER_SANITIZE_NUMBER_INT);
+		$situacao = filter_var($situacao, FILTER_SANITIZE_NUMBER_INT);
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
 		$rPdo = DBConnector::createConnection();
 		$rDao = new FiliadoPdoDao($rPdo);
 		$oFiliado = new Filiado(
@@ -81,6 +90,16 @@ class FiliadoController extends Controller
 		int $iCargo,
 		int $iSituacao
 	) {
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
+		$sCPF = filter_var($sCPF, FILTER_SANITIZE_SPECIAL_CHARS);
+		$sRG = filter_var($sRG, FILTER_SANITIZE_SPECIAL_CHARS);
+		$iIdade = filter_var($iIdade, FILTER_SANITIZE_NUMBER_INT);
+		$sTelefone = filter_var($sTelefone, FILTER_SANITIZE_SPECIAL_CHARS);
+		$sCelular = filter_var($sCelular, FILTER_SANITIZE_SPECIAL_CHARS);
+		$iEmpresa = filter_var($iEmpresa, FILTER_SANITIZE_NUMBER_INT);
+		$iCargo = filter_var($iCargo, FILTER_SANITIZE_NUMBER_INT);
+		$iSituacao = filter_var($iSituacao, FILTER_SANITIZE_NUMBER_INT);
+
 		$rPdo = DBConnector::createConnection();
 		$rDao = new FiliadoPdoDao($rPdo);
 		if ($rDao->insert(
@@ -102,6 +121,7 @@ class FiliadoController extends Controller
 
 	public function deletarFiliado(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new FiliadoPdoDao($rPdo);
 		if ($rDao->delete($id)) {

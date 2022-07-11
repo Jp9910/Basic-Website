@@ -27,7 +27,7 @@ if ($status->status === 200) {
     $sessionManager->setSessionVariable('logado', true);
     //$sessao = $sessionManager->getSessao();
     //var_dump($sessao);
-    header("Location: /home");
+    header("Location: /home", true, 302);
     exit();
 }
 var_dump($status);

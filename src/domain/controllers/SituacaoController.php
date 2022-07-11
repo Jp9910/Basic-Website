@@ -33,6 +33,7 @@ class SituacaoController extends Controller
 
 	public function getSituacaoById(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new SituacaoPdoDao($rPdo);
 		$oSituacao = $rDao->findById($id);
@@ -41,6 +42,8 @@ class SituacaoController extends Controller
 
 	public function editarSituacao(int $id, string $sNome)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($sNome)) {
             return json_encode([
                 'status' => 400,
@@ -64,6 +67,7 @@ class SituacaoController extends Controller
 
 	public function criarSituacao(string $sNome)
 	{
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($sNome)) {
             return json_encode([
                 'status' => 400,
@@ -86,6 +90,7 @@ class SituacaoController extends Controller
 
 	public function deletarSituacao(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new SituacaoPdoDao($rPdo);
 		if ($rDao->delete($id)) {

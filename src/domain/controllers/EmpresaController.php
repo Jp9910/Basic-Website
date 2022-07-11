@@ -33,6 +33,7 @@ class EmpresaController extends Controller
 
 	public function getEmpresaById(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		$oEmpresa = $rDao->findById($id);
@@ -41,19 +42,15 @@ class EmpresaController extends Controller
 
 	public function editarEmpresa(int $id, string $sNome)
 	{
-		if (empty($sNome)) {
-            return json_encode([
-                'status' => 400,
-                'status_text' => 'Nome não pode ser vazio.'
-            ]);
-        }
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		$oEmpresa = new Empresa($id, $sNome);
 		if ($rDao->update($oEmpresa)) {
 			return json_encode([
 				'status' => 200,
-				'status_text' => 'success'
+				'status_text' => 'Empresa editada.'
 			]);
 		}
 		return json_encode([
@@ -62,23 +59,16 @@ class EmpresaController extends Controller
 		]);
 	}
 
-	/*
-	* @TODO
-	*/
 	public function criarEmpresa(string $sNome)
 	{
-		if (empty($sNome)) {
-            return json_encode([
-                'status' => 400,
-                'status_text' => 'Nome não pode ser vazio'
-            ]);
-        }
+		// Checagem de nome vazio está sendo feita na api (front controller)
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		if ($rDao->insert(new Empresa(null, $sNome))){
 			return json_encode([
 				'status' => 200,
-				'status_text' => 'success'
+				'status_text' => 'Empresa criada.'
 			]);
 		}
 		return json_encode([
@@ -87,17 +77,16 @@ class EmpresaController extends Controller
 		]);
 	}
 
-	/**
-	 * @TODO
-	 */
 	public function deletarEmpresa(int $id)
 	{
+		// Retorna string mesmo que o input seja int
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		if ($rDao->delete($id)) {
 			return json_encode([
 				'status' => 200,
-				'status_text' => 'success'
+				'status_text' => 'Empresa excluida.'
 			]);
 		}
 		return json_encode([

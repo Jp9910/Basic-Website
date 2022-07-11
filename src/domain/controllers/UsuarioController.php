@@ -88,9 +88,6 @@ class UsuarioController extends Controller
 		]);
 	}
 
-	/*
-	* @TODO
-	*/
 	public function criarUsuario(string $sNome, string $sLogin, string $sSenha, int $isAdmin)
 	{
 		//criar conexao com o banco de dados e inserir um novo usuario
@@ -111,9 +108,6 @@ class UsuarioController extends Controller
 		]);
 	}
 
-	/**
-	 * @TODO
-	 */
 	public function deletarUsuario(int $id)
 	{
 		$rPdo = DBConnector::createConnection();

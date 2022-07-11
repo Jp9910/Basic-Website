@@ -33,6 +33,7 @@ class CargoController extends Controller
 
 	public function getCargoById(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new CargoPdoDao($rPdo);
 		$oCargo = $rDao->findById($id);
@@ -41,6 +42,8 @@ class CargoController extends Controller
 
 	public function editarCargo(int $id, string $sNome)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($sNome)) {
             return json_encode([
                 'status' => 400,
@@ -64,6 +67,7 @@ class CargoController extends Controller
 
 	public function criarCargo(string $sNome)
 	{
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($sNome)) {
             return json_encode([
                 'status' => 400,
@@ -86,6 +90,7 @@ class CargoController extends Controller
 
 	public function deletarCargo(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new CargoPdoDao($rPdo);
 		if ($rDao->delete($id)) {
