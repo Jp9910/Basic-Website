@@ -4,42 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filiado</title>
-    <link rel="icon" href="resources/img/indice.png">
+    <title>Cargo</title>
+    <link rel="icon" href="public/img/indice.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
 </head>
 <body>
     <div id="navbar"></div>
-    <h4 class="center">Filiados</h4>
+    <h4 class="center">Adicionar Cargo</h4>
     <div class="row">
 		<div class="center">
 			<p class="info" id="p-info">Info</p>
 		</div>
-		<div class="center-align">
-            <button id="botao-atualizar" type="button" class="btn waves-effect waves-light green">
-                <i class="material-icons">update</i>
-            </button>
-            <button onclick="location.href='cadastro-filiado'" id="botao-adicionar" type="button" class="btn waves-effect waves-light blue">
-                Adicionar Filiado
-                <i class="material-icons right">arrow_right</i>
-            </button>
-        </div>
+		<form class="col s12" action="/adicionar-cargo" method="post">
+			<div class="row">
+				<div class="input-field col s6 offset-s3">
+					<i class="material-icons prefix">house</i>
+					<input placeholder="MoobiTech" id="input-nome" name="nome" type="text" class="validate">
+					<label for="first_name">Nome</label>
+				</div>
+			</div>
+            <div class="center-align">
+				<button id="botao-enviar" type="button" class="btn waves-effect waves-light">
+					Adicionar
+					<i class="material-icons right">arrow_right</i>
+				</button>
+			</div>
+		</form>
         <table class="centered row col s8 offset-s2 striped responsive-table">
 			<thead>
                 <tr>
                     <th>Nome</th>
-                    <th>CPF</th>
-                    <th>RG</th>
-                    <th>Data de Nascimento</th>
-                    <th>Idade</th>
-                    <th>Telefone</th>
-                    <th>Celular</th>
-                    <th>Empresa</th>
-                    <th>Cargo</th>
-                    <th>Situação</th>
-                    <th></th>
+                    <th>Editar / Excluir</th>
                 </tr>
 			</thead>
 			<tbody>
@@ -51,7 +48,6 @@
 	</div>
     <script src="resources/libs/jquery-3.6.0.js"></script>
 	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
-	<script type="text/javascript" src="resources/js/filiado/lista-filiados.js"></script>
-	<script type="text/javascript"> $('#navbar').load('/navbar'); </script>
+	<script type="text/javascript" src="resources/js/cargo/cargo.js"></script>
 </body>
 </html>

@@ -15,8 +15,8 @@ $sessao = SessionManager::getInstance()->getSessao();
     <nav>
 		<div class="nav-wrapper">
 			<a href="/" class="brand-logo left">
-				<!-- <span src="/resources/img/sample-logo.png" ></span> -->
-				<img src="/resources/img/sample-logo.png" alt="logo" id="img-logo">
+				<!-- <span src="/public/img/sample-logo.png" ></span> -->
+				<img src="/public/img/sample-logo.png" alt="logo" id="img-logo">
 			</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				<?php if (isset($sessao['logado']) and $sessao['logado'] === true): ?>

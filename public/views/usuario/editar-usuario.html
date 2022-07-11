@@ -1,41 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Cadastro Sindicato Trainees</title>
-	<link rel="icon" href="resources/img/indice.png">
+	<title>Editar Usuário - Sindicato Trainees</title>
+	<link rel="icon" href="public/img/indice.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
 </head>
 <body>
 	<div id="navbar"></div>
-	<h3 class="center">Cadastro Sindicato dos Trainees</h3>
+
+	<h3 class="center">Editar Usuário</h3>
 	<br>
 	<div class="row">
-		<form class="col s12" action="/criar-usuario" method="post">
+		<form class="col s12" action="#" method="post">
+			<input type="hidden" name="_method" value="put" />
+			<div class="center">
+				<img src="public/img/spinner.gif" alt="Spinner" id="spinner">
+				<p class="info" id="p-info">Info</p>
+			</div>
 			<div class="row">
 				<div class="input-field col s6 offset-s3">
 					<i class="material-icons prefix">person</i>
-					<input placeholder="João da Silva" id="input-nome" name="nome" type="text" class="validate">
-					<label for="first_name">Nome</label>
+					<input value="x" id="input-nome" name="nome" type="text">
+					<label for="input-nome" class="active">Nome</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6 offset-s3">
 					<i class="material-icons prefix">account_circle</i>
-					<input placeholder="joaosilva" id="input-login" name="login" type="text" class="validate">
-					<label for="last_name">Login</label>
+					<input value="x" id="input-login" name="login" type="text">
+					<label class="active" for="input-login">Login</label>
 					<span class="helper-text" data-error="wrong" data-success="right">Será usado para entrar no sistema</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6 offset-s3">
 					<i class="material-icons prefix">lock_outline</i>
-					<input id="input-senha" name="senha" type="password" class="validate">
-					<label for="password">Senha</label>
+					<input value="" id="input-senha" name="senha" type="password" class="validate">
+					<label class="active" for="input-senha" class="active">Senha</label>
 				</div>
 			</div>
 			<div class="row">
@@ -50,17 +56,22 @@
 					</label>
 				</p>
 			</div>
-			<div class="center-align">
-				<button type="submit" class="btn waves-effect waves-light">
-					Cadastrar
-					<i class="material-icons right">person_add</i>
+			<div class="row">
+				<button type="button" id="botao-excluir" class="botao btn waves-effect waves-light red col s2 offset-s3">
+					Excluir Usuário
+					<i class="material-icons right">delete</i>
+				</button>
+				<button type="button" id="botao-enviar" class="botao btn waves-effect waves-light col s2 offset-s2">
+					Enviar Alterações
+					<i class="material-icons right">edit</i>
 				</button>
 			</div>
+			<span id="teste"></span>
 		</form>
 	</div>
 
 	<script src="resources/libs/jquery-3.6.0.js"></script>
 	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
-	<script type="text/javascript"> $('#navbar').load('/navbar'); </script>
+	<script src="resources/js/usuario/editar-usuario.js"></script>
 </body>
 </html>

@@ -4,8 +4,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Editar Usuário - Sindicato Trainees</title>
-	<link rel="icon" href="resources/img/indice.png">
+	<title>Editar Empresa - Sindicato Trainees</title>
+	<link rel="icon" href="public/img/indice.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
@@ -13,52 +13,25 @@
 <body>
 	<div id="navbar"></div>
 
-	<h3 class="center">Editar Usuário</h3>
+	<h3 class="center">Editar Empresa</h3>
 	<br>
 	<div class="row">
 		<form class="col s12" action="#" method="post">
 			<input type="hidden" name="_method" value="put" />
 			<div class="center">
-				<img src="resources/img/spinner.gif" alt="Spinner" id="spinner">
+				<img src="public/img/spinner.gif" alt="Spinner" id="spinner">
 				<p class="info" id="p-info">Info</p>
 			</div>
 			<div class="row">
 				<div class="input-field col s6 offset-s3">
-					<i class="material-icons prefix">person</i>
+					<i class="material-icons prefix">account_balance</i>
 					<input value="x" id="input-nome" name="nome" type="text">
 					<label for="input-nome" class="active">Nome</label>
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s6 offset-s3">
-					<i class="material-icons prefix">account_circle</i>
-					<input value="x" id="input-login" name="login" type="text">
-					<label class="active" for="input-login">Login</label>
-					<span class="helper-text" data-error="wrong" data-success="right">Será usado para entrar no sistema</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col s6 offset-s3">
-					<i class="material-icons prefix">lock_outline</i>
-					<input value="" id="input-senha" name="senha" type="password" class="validate">
-					<label class="active" for="input-senha" class="active">Senha</label>
-				</div>
-			</div>
-			<div class="row">
-				<p class="col s6 offset-s3">
-					<label>
-						<input value="0" class="with-gap radio-box" name="tipo_usuario" type="radio" checked />
-						<span>Usuário Comum</span>
-					</label>
-					<label class="radio-box">
-						<input value="1" class="with-gap radio-box" name="tipo_usuario" type="radio"/>
-						<span>Usuário Administrador</span>
-					</label>
-				</p>
-			</div>
-			<div class="row">
 				<button type="button" id="botao-excluir" class="botao btn waves-effect waves-light red col s2 offset-s3">
-					Excluir Usuário
+					Excluir Empresa
 					<i class="material-icons right">delete</i>
 				</button>
 				<button type="button" id="botao-enviar" class="botao btn waves-effect waves-light col s2 offset-s2">
@@ -72,6 +45,6 @@
 
 	<script src="resources/libs/jquery-3.6.0.js"></script>
 	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
-	<script src="resources/js/usuario/editar-usuario.js"></script>
+	<script src="resources/js/empresa/editar-empresa.js"></script>
 </body>
 </html>

@@ -4,23 +4,23 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 require_once 'vendor/autoload.php';
 
 // Home
-    get('/', 'resources/views/home.php');
-    get('/home', 'resources/views/home.php');
+    get('/', 'public/views/home.php');
+    get('/home', 'public/views/home.php');
 
 // LOGIN
-    get('/login', 'resources/views/login.html');
+    get('/login', 'public/views/login.html');
     post('/criar-sessao', 'src/api/post-login.php');
     get('/logout', 'src/api/logout.php');
 
 // NAVBAR
-    get('/navbar','resources/views/navbar.php');
+    get('/navbar','public/views/navbar.php');
 
 // USUARIOS
     // views
-    get('/cadastro', 'resources/views/usuario/cadastro.html');
-    get('/listar-usuarios', 'resources/views/usuario/lista-usuarios.html');
+    get('/cadastro', 'public/views/usuario/cadastro.html');
+    get('/listar-usuarios', 'public/views/usuario/lista-usuarios.html');
     //?usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
-    get('/editar-usuario', 'resources/views/usuario/editar-usuario.html');
+    get('/editar-usuario', 'public/views/usuario/editar-usuario.html');
     // api
     get('/usuarios', 'src/api/usuario/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
     get('/usuario/$id', 'src/api/usuario/get-usuarioById.php');
@@ -30,8 +30,8 @@ require_once 'vendor/autoload.php';
 
 // EMPRESA
     // views
-    get('/empresas', 'resources/views/empresa/empresa.html');
-    get('/editar-empresa', 'resources/views/empresa/editar-empresa.html');
+    get('/empresas', 'public/views/empresa/empresa.html');
+    get('/editar-empresa', 'public/views/empresa/editar-empresa.html');
     // api
     get('/lista-empresas', 'src/api/empresa/get-empresas.php');
     get('/empresa', 'src/api/empresa/get-empresaById.php');
@@ -41,8 +41,8 @@ require_once 'vendor/autoload.php';
 
 // CARGO
     // views
-    get('/cargos', 'resources/views/cargo/cargo.html');
-    get('/editar-cargo', 'resources/views/cargo/editar-cargo.html');
+    get('/cargos', 'public/views/cargo/cargo.html');
+    get('/editar-cargo', 'public/views/cargo/editar-cargo.html');
     // api
     get('/lista-cargos', 'src/api/cargo/get-cargos.php');
     get('/cargo', 'src/api/cargo/get-cargoById.php');
@@ -52,8 +52,8 @@ require_once 'vendor/autoload.php';
 
 // SITUAÇÃO
     // views
-    get('/situacoes', 'resources/views/situacao/situacao.html');
-    get('/editar-situacao', 'resources/views/situacao/editar-situacao.html');
+    get('/situacoes', 'public/views/situacao/situacao.html');
+    get('/editar-situacao', 'public/views/situacao/editar-situacao.html');
     // api
     get('/lista-situacaos', 'src/api/situacao/get-situacaos.php');
     get('/situacao', 'src/api/situacao/get-situacaoById.php');
@@ -63,9 +63,9 @@ require_once 'vendor/autoload.php';
 
 // FILIADO
     // views
-    get('/cadastro-filiado', 'resources/views/filiado/cadastro-filiado.html');
-    get('/listar-filiados', 'resources/views/filiado/lista-filiados.html');
-    get('/editar-filiado', 'resources/views/filiado/editar-filiado.html');
+    get('/cadastro-filiado', 'public/views/filiado/cadastro-filiado.html');
+    get('/listar-filiados', 'public/views/filiado/lista-filiados.html');
+    get('/editar-filiado', 'public/views/filiado/editar-filiado.html');
     // api
     get('/filiados', 'src/api/filiado/get-filiados.php');
     get('/filiado', 'src/api/filiado/get-filiadoById.php');
@@ -84,4 +84,4 @@ get('/item/$name', 'items.php');
 // For GET or POST
 // The 404.php which is inside the views folder will be called
 // The 404.php has access to $_GET and $_POST
-any('/404','resources/views/404.html');
+any('/404','public/views/404.html');

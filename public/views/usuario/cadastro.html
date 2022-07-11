@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cadastro Sindicato Trainees</title>
+	<link rel="icon" href="public/img/indice.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+</head>
+<body>
+	<div id="navbar"></div>
+	<h3 class="center">Cadastro Sindicato dos Trainees</h3>
+	<br>
+	<div class="row">
+		<form class="col s12" action="/criar-usuario" method="post">
+			<div class="row">
+				<div class="input-field col s6 offset-s3">
+					<i class="material-icons prefix">person</i>
+					<input placeholder="João da Silva" id="input-nome" name="nome" type="text" class="validate">
+					<label for="first_name">Nome</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6 offset-s3">
+					<i class="material-icons prefix">account_circle</i>
+					<input placeholder="joaosilva" id="input-login" name="login" type="text" class="validate">
+					<label for="last_name">Login</label>
+					<span class="helper-text" data-error="wrong" data-success="right">Será usado para entrar no sistema</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s6 offset-s3">
+					<i class="material-icons prefix">lock_outline</i>
+					<input id="input-senha" name="senha" type="password" class="validate">
+					<label for="password">Senha</label>
+				</div>
+			</div>
+			<div class="row">
+				<p class="col s6 offset-s3">
+					<label>
+						<input value="0" class="with-gap radio-box" name="tipo_usuario" type="radio" checked />
+						<span>Usuário Comum</span>
+					</label>
+					<label class="radio-box">
+						<input value="1" class="with-gap radio-box" name="tipo_usuario" type="radio"/>
+						<span>Usuário Administrador</span>
+					</label>
+				</p>
+			</div>
+			<div class="center-align">
+				<button type="submit" class="btn waves-effect waves-light">
+					Cadastrar
+					<i class="material-icons right">person_add</i>
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<script src="resources/libs/jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
+	<script type="text/javascript"> $('#navbar').load('/navbar'); </script>
+</body>
+</html>
