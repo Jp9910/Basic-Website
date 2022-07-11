@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cadastro de Filiado</title>
+	<link rel="icon" href="resources/img/indice.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+</head>
+<body>
+	<div id="navbar"></div>
+	<h3 class="center">Cadastro de Filiado</h3>
+	<br>
+	<div class="row">
+		<form class="col s12" action="#" method="post">
+			<div class="center">
+				<img src="resources/img/spinner.gif" alt="Spinner" id="spinner">
+				<p class="info" id="p-info">Info</p>
+			</div>
+			<div class="center">
+				<div class="input-field col s3 offset-s2">
+					<i class="material-icons prefix">person</i>
+					<input placeholder="João da Silva" id="input-nome" name="nome" type="text" class="validate">
+					<label for="first_name">Nome</label>
+				</div>
+				<div class="input-field col s3">
+					<i class="material-icons prefix">C</i>
+					<input placeholder="João da Silva" id="input-CPF" name="nome" type="text" class="validate">
+					<label for="first_name">CPF</label>
+				</div>
+				<div class="input-field col s3">
+					<i class="material-icons prefix">R</i>
+					<input placeholder="João da Silva" id="input-RG" name="nome" type="text" class="validate">
+					<label for="first_name">RG</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3 offset-s3">
+					<i class="material-icons prefix">date_range</i>
+					<input placeholder="João da Silva" id="input-dataNascimento" name="nome" type="date" class="validate">
+					<label for="first_name">Data de Nascimento</label>
+				</div>
+				<div class="input-field col s3">
+					<i class="material-icons prefix">I</i>
+					<input placeholder="João da Silva" id="input-idade" name="nome" type="number" class="validate">
+					<label for="first_name">Idade</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3 offset-s3">
+					<i class="material-icons prefix">phone</i>
+					<input placeholder="João da Silva" id="input-telefone" name="nome" type="text" class="validate">
+					<label for="first_name">Telefone</label>
+				</div>
+				<div class="input-field col s3">
+					<i class="material-icons prefix">smartphone</i>
+					<input placeholder="João da Silva" id="input-celular" name="nome" type="text" class="validate">
+					<label for="first_name">Celular</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s3 offset-s2">
+					<i class="material-icons prefix">account_balance</i>
+					<input placeholder="João da Silva" id="input-empresa" name="nome" type="text" class="validate">
+					<label for="first_name">Empresa</label>
+				</div>
+				<div class="input-field col s3">
+					<i class="material-icons prefix">supervisor_account</i>
+					<input placeholder="João da Silva" id="input-cargo" name="nome" type="text" class="validate">
+					<label for="first_name">Cargo</label>
+				</div>
+				<div class="input-field col s3">
+					<i class="material-icons prefix">weekend</i>
+					<input placeholder="João da Silva" id="input-situacao" name="nome" type="text" class="validate">
+					<label for="first_name">Situação</label>
+				</div>
+			</div>
+			<div class="center-align">
+				<button type="button" id="botao-enviar" class="btn waves-effect waves-light">
+					Cadastrar
+					<i class="material-icons right">group_add</i>
+				</button>
+			</div>
+			<span id="teste"></span>
+		</form>
+	</div>
+
+	<script src="resources/libs/jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
+	<script type="text/javascript"> $('#navbar').load('/navbar'); </script>
+	<script type="text/javascript" src="resources/js/filiado/cadastro-filiado.js"></script>
+</body>
+</html>

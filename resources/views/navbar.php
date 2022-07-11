@@ -23,6 +23,7 @@ $sessao = SessionManager::getInstance()->getSessao();
 					<li><a href="empresas">Empresas</a>
 					<li><a href="cargos">Cargos</a>
 					<li><a href="situacoes">Situações</a>
+					<li><a href="listar-filiados">Filiados</a>
 					<li><a href="teste">Teste logout</a>
 					<?php if (isset($sessao['usuario_isAdmin']) and $sessao['usuario_isAdmin'] === 1): ?>
 						<li><a href="cadastro">Cadastrar Usuário</a></li>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Editar Filiado - Sindicato Trainees</title>
+	<link rel="icon" href="resources/img/indice.png">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
+	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+</head>
+<body>
+	<div id="navbar"></div>
+
+	<h3 class="center">Editar Filiado</h3>
+	<br>
+	<div class="row">
+		<form class="col s12" action="#" method="post">
+			<input type="hidden" name="_method" value="put" />
+			<div class="center">
+				<img src="resources/img/spinner.gif" alt="Spinner" id="spinner">
+				<p class="info" id="p-info">Info</p>
+			</div>
+			<div class="row">
+				<div class="input-field col s4 offset-s4">
+					<i class="material-icons prefix">person</i>
+					<input value="x" id="input-nome" name="nome" type="text">
+					<label for="input-nome" class="active">Nome</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s2 offset-s4">
+					<i class="material-icons prefix">phone</i>
+					<input value="x" id="input-telefone" name="nome" type="text">
+					<label for="input-nome" class="active">Telefone</label>
+				</div>
+				<div class="input-field col s2">
+					<i class="material-icons prefix">smartphone</i>
+					<input value="x" id="input-celular" name="nome" type="text">
+					<label for="input-nome" class="active">Celular</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s2 offset-s3">
+					<i class="material-icons prefix">account_balance</i>
+					<input value="x" id="input-empresa" name="nome" type="text">
+					<label for="input-nome" class="active">Empresa</label>
+				</div>
+				<div class="input-field col s2">
+					<i class="material-icons prefix">supervisor_account</i>
+					<input value="x" id="input-cargo" name="nome" type="text">
+					<label for="input-nome" class="active">Cargo</label>
+				</div>
+				<div class="input-field col s2">
+					<i class="material-icons prefix">weekend</i>
+					<input value="x" id="input-situacao" name="nome" type="text">
+					<label for="input-nome" class="active">Situação</label>
+				</div>
+			</div>
+			<div class="row">
+				<button type="button" id="botao-excluir" class="botao btn waves-effect waves-light red col s2 offset-s3">
+					Excluir Filiado
+					<i class="material-icons right">delete</i>
+				</button>
+				<button type="button" id="botao-enviar" class="botao btn waves-effect waves-light col s2 offset-s2">
+					Enviar Alterações
+					<i class="material-icons right">edit</i>
+				</button>
+			</div>
+			<span id="teste"></span>
+		</form>
+	</div>
+
+	<script src="resources/libs/jquery-3.6.0.js"></script>
+	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
+	<script src="resources/js/filiado/editar-filiado.js"></script>
+</body>
+</html>
