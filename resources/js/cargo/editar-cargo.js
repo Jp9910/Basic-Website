@@ -6,7 +6,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 $(document).ready(function () {
     getCargoAjax();
-    $('form').attr('action', '/editar-usuario/'+params.id);
+    $('form').attr('action', '#');
     adicionarFuncaoBotaoExcluir();
     adicionarFuncaoBotaoEnviar();
     $('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
