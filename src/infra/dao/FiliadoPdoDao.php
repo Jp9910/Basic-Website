@@ -86,8 +86,8 @@ class FiliadoPdoDao implements FiliadoDao
                      flo_telefone, flo_celular, flo_data_ultima_atualizacao,
                      ema_id, cro_id, sto_id) 
 					VALUES 
-                    (:nome, :cpf, :rg, :data_nascimento, :idade,
-                    :telefone, :celular, :data_ultima_atualizacao,
+                    (:nome, :cpf, :rg, :dataNascimento, :idade,
+                    :telefone, :celular, :dataUltimaAtualizacao,
                     :empresa, :cargo, :situacao)";
 
 		$stmt = $this->rConexao->prepare($query);
@@ -105,11 +105,11 @@ class FiliadoPdoDao implements FiliadoDao
 		$stmt->bindParam('nome', $nome, PDO::PARAM_STR);
 		$stmt->bindParam('cpf', $CPF, PDO::PARAM_STR);
 		$stmt->bindParam('rg', $RG, PDO::PARAM_STR);
-		$stmt->bindParam('data_nascimento', $dataNascimento, PDO::PARAM_STR);
+		$stmt->bindParam('dataNascimento', $dataNascimento, PDO::PARAM_STR);
 		$stmt->bindParam('idade', $idade, PDO::PARAM_INT);
 		$stmt->bindParam('telefone', $telefone, PDO::PARAM_STR);
 		$stmt->bindParam('celular', $celular, PDO::PARAM_STR);
-		$stmt->bindParam('data_ultima_atualizacao', $dataUltimaAtualizacao, PDO::PARAM_STR);
+		$stmt->bindParam('dataUltimaAtualizacao', $dataUltimaAtualizacao, PDO::PARAM_STR);
 		$stmt->bindParam('empresa', $empresa, PDO::PARAM_INT);
 		$stmt->bindParam('cargo', $cargo, PDO::PARAM_INT);
 		$stmt->bindParam('situacao', $situacao, PDO::PARAM_INT);
@@ -123,7 +123,7 @@ class FiliadoPdoDao implements FiliadoDao
 	{
 		$query = 'UPDATE flo_filiado
 			SET flo_nome = :nome, flo_telefone = :telefone, flo_celular = :celular,
-				flo_data_ultima_atualizacao = :data_ultima_atualizacao,
+				flo_data_ultima_atualizacao = :dataUltimaAtualizacao,
 				ema_id = :empresa, cro_id = :cargo, sto_id = :situacao
 			WHERE flo_id = :id';
 		$stmt = $this->rConexao->prepare($query);
@@ -131,17 +131,18 @@ class FiliadoPdoDao implements FiliadoDao
 		$nome = $oFiliado->nome();
 		$telefone = $oFiliado->telefone();
 		$celular = $oFiliado->celular();
-		$dataUltimaAtualizacao = $oFiliado->dataUltimaAtualizacao();
+		$dataUltimaAtualizacao = $oFiliado->dataUltimaAtualizacao()->format('Y-m-d');
 		$empresa = $oFiliado->empresa();
 		$cargo = $oFiliado->cargo();
 		$situacao = $oFiliado->situacao();
 		$stmt->bindParam('nome', $nome, PDO::PARAM_STR);
 		$stmt->bindParam('telefone', $telefone, PDO::PARAM_STR);
 		$stmt->bindParam('celular', $celular, PDO::PARAM_STR);
-		$stmt->bindParam('data_ultima_atualizacao', $dataUltimaAtualizacao, PDO::PARAM_STR);
+		$stmt->bindParam('dataUltimaAtualizacao', $dataUltimaAtualizacao, PDO::PARAM_STR);
 		$stmt->bindParam('empresa', $empresa, PDO::PARAM_INT);
 		$stmt->bindParam('cargo', $cargo, PDO::PARAM_INT);
 		$stmt->bindParam('situacao', $situacao, PDO::PARAM_INT);
+		$stmt->bindParam('id', $id, PDO::PARAM_INT);
 		$this->rConexao->beginTransaction();
 		$stmt->execute();
 		$this->rConexao->commit();

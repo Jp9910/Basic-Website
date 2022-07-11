@@ -88,11 +88,30 @@ CREATE TABLE flo_filiado (
     flo_nome VARCHAR(55) NOT NULL,
     flo_cpf VARCHAR(11) UNIQUE NOT NULL,
     flo_rg VARCHAR(60) UNIQUE NOT NULL,
-    flo_data_nascimento VARCHAR(55),
+    flo_data_nascimento DATE,
+    flo_idade TINYINT UNSIGNED,
+    flo_telefone VARCHAR(11),
+    flo_celular VARCHAR(11),
+    flo_data_ultima_atualizacao DATETIME,
     ema_id INT NOT NULL,
     cro_id INT NOT NULL,
     sto_id INT NOT NULL,
-    FOREIGN KEY (ema_id) REFERENCES ema_empresa(tse_id)
-    FOREIGN KEY (cro_id) REFERENCES 
-    FOREIGN KEY (sto_id) REFERENCES 
+    FOREIGN KEY (ema_id) REFERENCES ema_empresa(ema_id),
+    FOREIGN KEY (cro_id) REFERENCES cro_cargo(cro_id),
+    FOREIGN KEY (sto_id) REFERENCES sto_situacao(sto_id)
 );
+
+SELECT * FROM flo_filiado;
+DROP TABLE flo_filiado;
+
+CREATE TABLE dpe_dependente (
+	dpe_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    dpe_nome VARCHAR(55) NOT NULL,
+    dpe_data_nascimento DATE,
+    dpe_parentesco VARCHAR(55) NOT NULL,
+    flo_id INT NOT NULL,
+    FOREIGN KEY (flo_id) REFERENCES flo_filiado(flo_id)
+);
+
+SELECT * FROM dpe_dependente;
+DROP TABLE dpe_dependente;

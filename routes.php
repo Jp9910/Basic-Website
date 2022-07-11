@@ -80,8 +80,8 @@ get('/navbar','resources/views/navbar.php');
     get('/filiados', 'src/api/filiado/get-filiados.php');
     get('/filiado', 'src/api/filiado/get-filiadoById.php');
     post('/filiado', 'src/api/filiado/post-filiado.php');
-    put('/filiado', 'src/api/filiado/put-editarFiliado.php');
-    delete('/filiado', 'src/api/filiado/delete-excluirFiliado.php');
+    put('/filiado', 'src/api/filiado/put-filiado.php');
+    delete('/filiado', 'src/api/filiado/delete-filiado.php');
 
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 
