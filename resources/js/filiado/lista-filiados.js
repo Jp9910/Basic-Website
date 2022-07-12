@@ -5,7 +5,35 @@ $(document).ready(function () {
 	$('#botao-atualizar').on('click', function(){
 		getFiliadosAjax();
 	});
+	$('#input-filtro').on('input', filtrarFiliados);
 });
+
+function filtrarFiliados(event)
+{
+	//console.log(event.target.value); // igual a console.log(this.value);
+	console.log(this.value);
+	let filiados = $('.filiado');
+	if (this.value.length > 0) {
+		filiados.each(function (index, element) {
+			// element == this
+			let nome = $(this).find('.nome').text()
+			let expRegular = new RegExp(this.value, 'i') //flag 'i' indica para ser caseInsensitive
+			if (!expRegular.test(nome)) {
+				$(this).addClass('invisivel');
+				console.log(nome + true)
+			}
+            else {
+				$(this).removeClass('invisivel');
+				console.log(nome + false)
+			}
+		});
+	} else {
+		filiados.each(function (index, element) {
+			// element == this
+			$(this).removeClass('invisivel');
+		});
+	}
+}
 
 function getFiliadosAjax()
 {
@@ -25,18 +53,18 @@ function montarTabelaFiliados(data, textStatus, jqXHR)
 
 function novaLinha(filiado)
 {
-	let linha = $('<tr>');
-	let colunaNome = $('<td>').text(filiado.nome);
-	let colunaCPF = $('<td>').text(filiado.CPF);
-	let colunaRG = $('<td>').text(filiado.RG);
-	let colunaDataNascimento = $('<td>').text(filiado.dataNascimento.date.substr(0,10));
-	let colunaIdade = $('<td>').text(filiado.idade);
-	let colunaTelefone = $('<td>').text(filiado.telefone);
-	let colunaCelular = $('<td>').text(filiado.celular);
-	let colunaEmpresa = $('<td>').text(filiado.empresa);
-	let colunaCargo = $('<td>').text(filiado.cargo);
-	let colunaSituacao = $('<td>').text(filiado.situacao);
-	let colunaEditar = $('<td>');
+	let linha = $('<tr>').addClass("filiado");
+	let colunaNome = $('<td>').addClass("nome").text(filiado.nome);
+	let colunaCPF = $('<td>').addClass("CPF").text(filiado.CPF);
+	let colunaRG = $('<td>').addClass("RG").text(filiado.RG);
+	let colunaDataNascimento = $('<td>').addClass("dataNascimento").text(filiado.dataNascimento.date.substr(0,10));
+	let colunaIdade = $('<td>').addClass("idade").text(filiado.idade);
+	let colunaTelefone = $('<td>').addClass("telefone").text(filiado.telefone);
+	let colunaCelular = $('<td>').addClass("celular").text(filiado.celular);
+	let colunaEmpresa = $('<td>').addClass("empresa").text(filiado.empresa);
+	let colunaCargo = $('<td>').addClass("cargo").text(filiado.cargo);
+	let colunaSituacao = $('<td>').addClass("situacao").text(filiado.situacao);
+	let colunaEditar = $('<td>').addClass("editar");
 	let link = $("<a>").attr("href","/editar-filiado?id="+filiado.id).addClass("botao-editar");
 	let icone = $("<i>").addClass("small").addClass("material-icons").text("edit");
 	// Icone dentro do <a>

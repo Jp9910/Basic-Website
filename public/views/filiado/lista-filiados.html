@@ -17,16 +17,22 @@
 		<div class="center">
 			<p class="info" id="p-info">Info</p>
 		</div>
-		<div class="center-align">
-            <button id="botao-atualizar" type="button" class="btn waves-effect waves-light green">
-                <i class="material-icons">update</i>
-            </button>
-            <button onclick="location.href='cadastro-filiado'" id="botao-adicionar" type="button" class="btn waves-effect waves-light blue">
-                Adicionar Filiado
-                <i class="material-icons right">arrow_right</i>
-            </button>
+        <div id="acoes-filiados" class="col s12">
+            <div class="input-field col s3 offset-s2">
+                <i class="material-icons prefix">search</i>
+                <input placeholder="Buscar por nome ou data" id="input-filtro" name="filtro" type="text">
+            </div>
+            <div id="div-botoes-filiados" class="col offset-s2">
+                <button class="btn waves-effect waves-light green" id="botao-atualizar" type="button">
+                    <i class="material-icons">update</i>
+                </button>
+                <button class="btn waves-effect waves-light blue" onclick="location.href='cadastro-filiado'" id="botao-adicionar" type="button">
+                    Adicionar Filiado
+                    <i class="material-icons right">arrow_right</i>
+                </button>
+            </div>
         </div>
-        <table class="centered row col s8 offset-s2 striped responsive-table">
+        <table id="tabela-filiados" class="centered row col s8 offset-s2 striped responsive-table">
 			<thead>
                 <tr>
                     <th>Nome</th>

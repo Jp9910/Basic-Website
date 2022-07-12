@@ -33,6 +33,23 @@ td, th {
 	border: 1px solid #dddddd;
 }
 
+.filtro-pesquisa {
+	max-width: 100%;
+}
+
+#acoes-filiados {
+	margin-bottom: 0px;
+	max-height: 75px;
+}
+
+#tabela-filiados {
+	margin-top: 0px;
+}
+
+#div-botoes-filiados {
+	max-width: 100%;
+}
+
 /* .frase {
 	font-size: 20px;
 }
