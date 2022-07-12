@@ -33,12 +33,19 @@ class SessionManager {
 
     public function &startSessao(): array
     {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         return $_SESSION;
     }
 
     public function setSessionVariable(string $key, mixed $value)
     {
         $_SESSION[$key] = $value;
+    }
+
+    public function unsetSessionVariable(string $key)
+    {
+        unset($_SESSION[$key]);
     }
 }

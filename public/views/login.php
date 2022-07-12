@@ -1,3 +1,9 @@
+<?php
+use Jp\SindicatoTrainees\infra\gerenciadores\SessionManager;
+$sessionManager = SessionManager::getInstance();
+$sessao = $sessionManager->getSessao();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,18 +21,30 @@
 	<h3 class="center">Login Sindicato dos Trainees</h3>
 	<br>
 	<div class="center">
+		<div class="center">
+			<p class="alert" id="p-info">
+				<?php 
+				// Flash message usando a session
+				if (isset($sessao['mensagem'])) {
+					echo $sessao['mensagem'];
+					$sessionManager->unsetSessionVariable('mensagem');
+					$sessionManager->unsetSessionVariable('tipo_mensagem');
+				}
+				?>
+			</p>
+		</div>
 		<form class="col s12" action="/criar-sessao" method="post">
 			<div class="row">
 				<div class="input-field col s3 offset-s4">
 					<i class="material-icons prefix">account_circle</i>
-					<input placeholder="Placeholder" id="first_name" name="login" type="text" class="validate">
+					<input required placeholder="Placeholder" id="first_name" name="login" type="text" class="validate">
 					<label for="first_name">Usuário</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s3 offset-s4">
 					<i class="material-icons prefix">lock_outline</i>
-					<input id="password" name="senha" type="password" class="validate">
+					<input required id="password" name="senha" type="password" class="validate">
 					<label for="password">Senha</label>
 				</div>
 			</div>

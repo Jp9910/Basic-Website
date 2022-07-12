@@ -1,3 +1,9 @@
+<?php
+use Jp\SindicatoTrainees\infra\gerenciadores\SessionManager;
+$sessionManager = SessionManager::getInstance();
+$sessao = $sessionManager->getSessao();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,9 +22,17 @@
 	<header>
 		<div class="container">
 			<h1 class="titulo">Home Page!</h1>
-			<p> 
-				<?php var_dump($_SESSION); ?> 
-			</p>
+			<h5> 
+				<?php
+				//var_dump($_SESSION);
+				if (isset($sessao['mensagem']) and $sessao['logado']) {
+					echo $sessao['mensagem'] . PHP_EOL;
+					echo "Bem-vindo, " . $sessao['usuario_nome'] . ".";
+					$sessionManager->unsetSessionVariable('mensagem');
+					$sessionManager->unsetSessionVariable('tipo_mensagem');
+				}
+				?> 
+			</h5>
 		</div>
 	</header>
 

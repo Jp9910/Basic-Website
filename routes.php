@@ -8,7 +8,7 @@ require_once 'vendor/autoload.php';
     get('/home', 'public/views/home.php');
 
 // LOGIN
-    get('/login', 'public/views/login.html');
+    get('/login', 'public/views/login.php');
     post('/criar-sessao', 'src/api/post-login.php');
     get('/logout', 'src/api/logout.php');
 

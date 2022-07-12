@@ -79,7 +79,7 @@ class UsuarioController extends Controller
 			// Usuário existe e senha está correta.
 			return json_encode([
 				'status' => 200,
-				'status_text' => 'success',
+				'status_text' => 'Login efetuado com sucesso.',
 				'usuario' => $oUsuario
 			]);
 		}
