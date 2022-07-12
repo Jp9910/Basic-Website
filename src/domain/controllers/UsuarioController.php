@@ -61,7 +61,7 @@ class UsuarioController extends Controller
 		]);
 	}
 
-	public function login(string $sLogin, string $sSenha): string
+	public function login(string $sLogin, string $sSenhaDigitada): string
 	{
 		$rPdo = DBConnector::createConnection();
 		$rDao = new UsuarioPdoDao($rPdo);
@@ -75,7 +75,7 @@ class UsuarioController extends Controller
 				'status_text' => 'Usuário não existe'
 			]);
 		}
-		if (password_verify($sSenha, $oUsuario->sSenha())) {
+		if ($oUsuario->verificarSenha($sSenhaDigitada)) {
 			// Usuário existe e senha está correta.
 			return json_encode([
 				'status' => 200,

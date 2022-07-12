@@ -5,7 +5,7 @@ namespace Jp\SindicatoTrainees\domain\models;
 use JsonSerializable;
 
 /**
- * @version 1.0.0 Versionamento inicial da classe
+ * @version 1.1.0 Função para verificar se a senha digitada está correta
  */
 class Usuario implements JsonSerializable
 {
@@ -59,6 +59,30 @@ class Usuario implements JsonSerializable
 		return $this->isAdmin;
 	}
 
+	/*
+	* @since 1.1.0 Função para verificar se a senha digitada está correta
+	*
+	* Verifica se a senha passada corresponde com a senha do usuário.
+	* Retorna true caso seja, ou false caso não.
+	*
+	* @author Joao Paulo joaopaulo@moobitech.com.br
+	*
+	* @return bool
+	*/
+	public function verificarSenha(string $sSenhaDigitada): bool
+	{
+		return password_verify($sSenhaDigitada, $this->sSenha);
+	}
+
+	/*
+	* @since 1.0.0 Definição do versionamento da função
+	*
+	* Define um ID para o objeto de usuário.
+	*
+	* @author Joao Paulo joaopaulo@moobitech.com.br
+	*
+	* @return void
+	*/
 	public function defineId(int $id): void
 	{
 		if (!is_null($this->id)) {
