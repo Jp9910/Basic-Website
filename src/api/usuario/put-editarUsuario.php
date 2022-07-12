@@ -32,16 +32,18 @@ $sResultadoJson = $oController->editarUsuario(
 );
 
 // Enviar resposta
-// header("HTTP/1.1 200 OK");
-$httpStatusCode = 200;
-$httpStatusMsg  = 'Usuario Editado.';
-$phpSapiName    = substr(php_sapi_name(), 0, 3);
-if ($phpSapiName == 'cgi' || $phpSapiName == 'fpm') {
-    header('Status: '.$httpStatusCode.' '.$httpStatusMsg);
-} else {
-    $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.1';
-    header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
-}
+header("HTTP/1.1 200 Usuário editado.");
+
+// Enviar resposta verificando o tipo de interface entre o servidor e o php
+// $httpStatusCode = 200;
+// $httpStatusMsg  = 'Usuario Editado.';
+// $phpSapiName    = substr(php_sapi_name(), 0, 3);
+// if ($phpSapiName == 'cgi' || $phpSapiName == 'fpm') {
+//     header('Status: '.$httpStatusCode.' '.$httpStatusMsg);
+// } else {
+//     $protocol = isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.1';
+//     header($protocol.' '.$httpStatusCode.' '.$httpStatusMsg);
+// }
 
 /*
 // Processar os parâmetros usando a URL. Em vez disso, usarei o RequestManager

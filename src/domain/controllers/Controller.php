@@ -4,6 +4,7 @@ namespace Jp\SindicatoTrainees\domain\controllers;
 
 abstract class Controller
 {
+    // @TODO: Implementar PSR-15 e PSR-7
     /**
      * Execute an action on the controller.
      *
