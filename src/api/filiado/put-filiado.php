@@ -10,6 +10,13 @@ $request_body = file_get_contents('php://input');
 parse_str($request_body, $dataPayload);
 // $request = $requestManager->getRequest();
 
+// id está sendo passado dinamicamente na url (sem ser como parâmetro get)
+$dataPayload['id'] = filter_var($dataPayload['id'], FILTER_VALIDATE_INT);
+if (is_null($dataPayload['id']) or $dataPayload['id'] === false) {
+    header("HTTP/1.1 400 Bad Request. Id deve ser um inteiro.");
+    exit();
+}
+
 $oController = new FiliadoController();
 $sResultadoJson = $oController->editarFiliado(
     $dataPayload['id'],

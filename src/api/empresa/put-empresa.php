@@ -12,13 +12,7 @@ if($id === false) {
 }
 
 $requestManager = RequestManager::getInstance();
-$requestManager->getRequest();
 $request = $requestManager->getRequest();
-
-if (empty($request['nome'])) {
-    header("HTTP/1.1 400 Nome nao pode ser vazio");
-    exit();
-}
 
 $oController = new EmpresaController();
 $sResultadoJson = $oController->editarEmpresa(

@@ -44,6 +44,13 @@ class EmpresaController extends Controller
 	{
 		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
+		//@Nota: Checagem de nome nulo é mais apropriada nesta api ou no controller?
+		if (empty($sNome)) {
+            return json_encode([
+                'status' => 400,
+                'status_text' => 'Nome não pode ser vazio.'
+            ]);
+        }
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		$oEmpresa = new Empresa($id, $sNome);
@@ -61,8 +68,14 @@ class EmpresaController extends Controller
 
 	public function criarEmpresa(string $sNome)
 	{
-		// Checagem de nome vazio está sendo feita na api (front controller)
 		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
+		//@Nota: Checagem de nome nulo é mais apropriada nesta api ou no controller?
+		if (empty($sNome)) {
+            return json_encode([
+                'status' => 400,
+                'status_text' => 'Nome não pode ser vazio.'
+            ]);
+        }
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		if ($rDao->insert(new Empresa(null, $sNome))){

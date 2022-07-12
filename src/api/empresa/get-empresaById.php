@@ -11,7 +11,7 @@ $id = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT);
 // 0 === false? --> false
 
 // Comparar com false para o caso de retornar 0 (o que já seria 
-// inválido pq não existe id 0 nas tabelas, mas falha mais rápido)
+// inválido pq não existe id 0 nas tabelas, mas falha menos rápido)
 if($id === false) {
     //http_response_code(401); //<-- Enviar apenas o código de status
     header("HTTP/1.1 400 Bad Request. Id deve ser um inteiro."); //<-- Enviar mais informações

@@ -34,6 +34,7 @@ class UsuarioController extends Controller
 
 	public function getUsuarioById(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new UsuarioPdoDao($rPdo);
 		$oUsuario = $rDao->findById($id);
@@ -42,6 +43,7 @@ class UsuarioController extends Controller
 
 	public function editarUsuario(int $id, string $sNome, string $sLogin, string $sSenha, int $isAdmin)
 	{
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new UsuarioPdoDao($rPdo);
 		if (!empty($sSenha))
@@ -90,9 +92,9 @@ class UsuarioController extends Controller
 
 	public function criarUsuario(string $sNome, string $sLogin, string $sSenha, int $isAdmin)
 	{
-		//criar conexao com o banco de dados e inserir um novo usuario
-		// throw new Exception('teste');
-		// exit();
+		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
+		$sLogin = filter_var($sLogin, FILTER_SANITIZE_SPECIAL_CHARS);
+		$isAdmin = filter_var($isAdmin, FILTER_VALIDATE_BOOL, FILTER_NULL_ON_FAILURE);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new UsuarioPdoDao($rPdo);
 		$senha_hashed = password_hash($sSenha, PASSWORD_DEFAULT);
@@ -110,6 +112,7 @@ class UsuarioController extends Controller
 
 	public function deletarUsuario(int $id)
 	{
+		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 		$rPdo = DBConnector::createConnection();
 		$rDao = new UsuarioPdoDao($rPdo);
 		if ($rDao->delete($id)) {

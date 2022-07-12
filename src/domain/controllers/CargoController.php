@@ -67,6 +67,7 @@ class CargoController extends Controller
 
 	public function criarCargo(string $sNome)
 	{
+		//@Nota: Checagem de nome nulo é mais apropriada no handler da api ou aqui no controller?
 		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
         if (empty($sNome)) {
             return json_encode([

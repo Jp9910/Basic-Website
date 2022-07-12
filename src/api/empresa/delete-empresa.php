@@ -8,13 +8,10 @@ use Jp\SindicatoTrainees\infra\gerenciadores\RequestManager;
 $id = filter_input(INPUT_GET,'id', FILTER_VALIDATE_INT);
 if($id === false) {
     header("HTTP/1.1 400 Bad Request. Id deve ser um inteiro.");
-    echo "Bad Request. Id deve ser um inteiro.";
     exit();
 }
 
 $requestManager = RequestManager::getInstance();
-$requestManager->getRequest();
-
 $request = $requestManager->getRequest();
 
 $oController = new EmpresaController();
