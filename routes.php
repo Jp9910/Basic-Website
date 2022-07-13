@@ -69,7 +69,7 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	get('/listar-filiados', 'public/views/filiado/lista-filiados.html');
 	get('/editar-filiado', 'public/views/filiado/editar-filiado.html');
 	// api
-	get('/filiados', 'src/api/filiado/get-filiados.php');
+	get('/filiados', 'src/api/filiado/get-filiadosPagina.php');
 	get('/filiado', 'src/api/filiado/get-filiadoById.php');
 	post('/filiado', 'src/api/filiado/post-filiado.php');
 	put('/filiado', 'src/api/filiado/put-filiado.php');

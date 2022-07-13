@@ -25,12 +25,23 @@ class FiliadoController extends Controller
 	*
 	* @return array
 	*/
+
+	// @NOTE: Not yet used
 	public function getFiliados(): array
 	{
 		$rPdo = DBConnector::createConnection();
 		$rDao = new FiliadoPdoDao($rPdo);
 		$loFiliados = $rDao->getAll();
 		return $loFiliados;
+	}
+
+	public function getFiliadosPagina(?int $pagina=1, ?int $qntPorPag=3): array
+	{
+		$qntPorPag = filter_var($qntPorPag, FILTER_SANITIZE_NUMBER_INT);
+		$rPdo = DBConnector::createConnection();
+		$rDao = new FiliadoPdoDao($rPdo);
+		$loEmpresas = $rDao->getPagina($pagina, $qntPorPag);
+		return $loEmpresas;
 	}
 
 	public function getFiliadoById(int $id)

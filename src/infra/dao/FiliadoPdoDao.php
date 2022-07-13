@@ -28,6 +28,18 @@ class FiliadoPdoDao implements FiliadoDao
 		return $this->loadFiliados($stmt);
 	}
 
+	public function getPagina(?int $pagina, ?int $quantidade): array
+	{
+		if (isset($pagina) and isset($quantidade)) {
+			$sql = 'SELECT * FROM flo_filiado LIMIT ? OFFSET ?';
+			$stmt = $this->rConexao->prepare($sql);
+			$stmt->bindValue(1, ($quantidade), PDO::PARAM_INT);
+			$stmt->bindValue(2, (($pagina*$quantidade)-$quantidade), PDO::PARAM_INT);
+			$stmt->execute();
+			return $this->loadFiliados($stmt);
+		}
+	}
+
 	public function findById(int $id): Filiado
 	{
 		$query = 'SELECT * FROM flo_filiado WHERE flo_id = ?';

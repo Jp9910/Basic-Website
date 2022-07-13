@@ -7,6 +7,7 @@ use Jp\SindicatoTrainees\domain\models\Filiado;
 interface FiliadoDao
 {
 	public function getAll(): array;
+	public function getPagina(?int $pagina, ?int $quantidade): array;
 	public function findById(int $id): Filiado;
 	public function findByEmpresa(int $id): array;
 	public function findByCargo(int $id): array;

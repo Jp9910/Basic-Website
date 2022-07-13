@@ -48,7 +48,28 @@ function filtrarFiliados(event)
 
 function getFiliadosAjax()
 {
-	$.get("filiados", montarTabelaFiliados, "json");
+	let pagina = $('#input-pagina').val();
+	let qntPorPag = $('#input-qntPorPag').val();
+	$.get("filiados?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaFiliados, "json");
+}
+
+
+function proximaPagina()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	inputPagina.val(parseInt(valorDoInput)+1);
+	getFiliadosAjax()
+}
+
+function paginaAnterior()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	if(valorDoInput > 1) {
+		inputPagina.val(parseInt(valorDoInput)-1);
+		getFiliadosAjax()
+	}
 }
 
 function montarTabelaFiliados(data, textStatus, jqXHR)
