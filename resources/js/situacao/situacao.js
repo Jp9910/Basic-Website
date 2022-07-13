@@ -30,14 +30,31 @@ function adicionarFuncaoBotaoAdicionarSituacao()
 
 function getSituacaosAjax()
 {
-	$.get("lista-situacaos", montarTabelaSituacaos, "json");
+	let pagina = $('#input-pagina').val();
+	let qntPorPag = $('#input-qntPorPag').val();
+	$.get("lista-situacaos?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaSituacaos, "json");
+}
+
+function proximaPagina()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	inputPagina.val(parseInt(valorDoInput)+1);
+	getSituacaosAjax()
+}
+
+function paginaAnterior()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	if(valorDoInput > 1) {
+		inputPagina.val(parseInt(valorDoInput)-1);
+		getSituacaosAjax()
+	}
 }
 
 function montarTabelaSituacaos(data, textStatus, jqXHR)
 {
-	console.log(data);
-	console.log(textStatus);
-	console.log(jqXHR);
 	let $tbody = $('tbody');
 	$tbody.html('');
 	$.each(data, function(){

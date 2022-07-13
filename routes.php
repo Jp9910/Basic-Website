@@ -57,7 +57,7 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	get('/situacoes', 'public/views/situacao/situacao.html');
 	get('/editar-situacao', 'public/views/situacao/editar-situacao.html');
 	// api
-	get('/lista-situacaos', 'src/api/situacao/get-situacaos.php');
+	get('/lista-situacaos', 'src/api/situacao/get-situacaosPagina.php');
 	get('/situacao', 'src/api/situacao/get-situacaoById.php');
 	post('/situacao', 'src/api/situacao/post-situacao.php');
 	put('/situacao', 'src/api/situacao/put-situacao.php');
