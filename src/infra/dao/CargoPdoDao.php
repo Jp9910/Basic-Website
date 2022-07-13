@@ -27,6 +27,18 @@ class CargoPdoDao implements CargoDao
 		return $this->loadCargos($stmt);
 	}
 
+	public function getPagina(?int $pagina, ?int $quantidade): array
+	{
+		if (isset($pagina) and isset($quantidade)) {
+			$sql = 'SELECT * FROM cro_cargo LIMIT ? OFFSET ?';
+			$stmt = $this->rConexao->prepare($sql);
+			$stmt->bindValue(1, ($quantidade), PDO::PARAM_INT);
+			$stmt->bindValue(2, (($pagina*$quantidade)-$quantidade), PDO::PARAM_INT);
+			$stmt->execute();
+			return $this->loadCargos($stmt);
+		}
+	}
+
 	public function findById(int $id): Cargo
 	{
 		$query = 'SELECT * FROM cro_cargo WHERE cro_id = ?';

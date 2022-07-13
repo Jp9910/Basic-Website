@@ -23,12 +23,23 @@ class CargoController extends Controller
 	*
 	* @return array
 	*/
+
+	// @NOTE: Not yet used
 	public function getCargos(): array
 	{
 		$rPdo = DBConnector::createConnection();
 		$rDao = new CargoPdoDao($rPdo);
 		$loCargos = $rDao->getAll();
 		return $loCargos;
+	}
+
+	public function getCargosPagina(?int $pagina=1, ?int $qntPorPag=3): array
+	{
+		$qntPorPag = filter_var($qntPorPag, FILTER_SANITIZE_NUMBER_INT);
+		$rPdo = DBConnector::createConnection();
+		$rDao = new CargoPdoDao($rPdo);
+		$loEmpresas = $rDao->getPagina($pagina, $qntPorPag);
+		return $loEmpresas;
 	}
 
 	public function getCargoById(int $id)

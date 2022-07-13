@@ -30,14 +30,33 @@ function adicionarFuncaoBotaoAdicionarCargo()
 
 function getCargosAjax()
 {
-	$.get("lista-cargos", montarTabelaCargos, "json");
+	let pagina = $('#input-pagina').val();
+	let qntPorPag = $('#input-qntPorPag').val();
+	$.get("lista-cargos?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaCargos, "json");
+}
+
+function proximaPagina()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	inputPagina.val(parseInt(valorDoInput)+1);
+	console.log("prox pag: "+inputPagina.val())
+	getCargosAjax()
+}
+
+function paginaAnterior()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	if(valorDoInput > 1) {
+		inputPagina.val(parseInt(valorDoInput)-1);
+		console.log("pag ant: "+inputPagina.val())
+		getCargosAjax()
+	}
 }
 
 function montarTabelaCargos(data, textStatus, jqXHR)
 {
-	console.log(data);
-	console.log(textStatus);
-	console.log(jqXHR);
 	let $tbody = $('tbody');
 	$tbody.html('');
 	$.each(data, function(){

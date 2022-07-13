@@ -46,7 +46,7 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	get('/cargos', 'public/views/cargo/cargo.html');
 	get('/editar-cargo', 'public/views/cargo/editar-cargo.html');
 	// api
-	get('/lista-cargos', 'src/api/cargo/get-cargos.php');
+	get('/lista-cargos', 'src/api/cargo/get-cargosPagina.php');
 	get('/cargo', 'src/api/cargo/get-cargoById.php');
 	post('/cargo', 'src/api/cargo/post-cargo.php');
 	put('/cargo', 'src/api/cargo/put-cargo.php');
