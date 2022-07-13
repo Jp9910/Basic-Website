@@ -10,22 +10,33 @@ $(document).ready(function () {
 
 function filtrarFiliados(event)
 {
-	//console.log(event.target.value); // igual a console.log(this.value);
-	console.log(this.value);
+	// Aqui, _event.target_ é equivalente a _this_
+	//console.log(event.target.value);
 	let filiados = $('.filiado');
-	if (this.value.length > 0) {
+	if (event.target.value.length > 0) {
 		filiados.each(function (index, element) {
 			// element == this
+			// Aqui o _this_ não mais se refere ao campo de input, mas sim ao elemento do loop each.
+			// Então é preciso usar o parâmetro (event) para pegar o que foi digitado.
 			let nome = $(this).find('.nome').text()
-			let expRegular = new RegExp(this.value, 'i') //flag 'i' indica para ser caseInsensitive
-			if (!expRegular.test(nome)) {
+			let data = $(this).find('.dataNascimento').text()//.substr(5,7)
+			//console.log("mes: "+ data)
+			let expRegular = new RegExp(event.target.value, 'i') //flag 'i' indica para ser caseInsensitive
+			if (!expRegular.test(nome) && !expRegular.test(data)) {
 				$(this).addClass('invisivel');
-				console.log(nome + true)
 			}
             else {
 				$(this).removeClass('invisivel');
-				console.log(nome + false)
 			}
+
+			// Outro jeito de comparar sem usar regex
+			// let nome = $(this).find('.nome').text()
+			// let comparavel = nome.substr(0, event.target.value.length).toLowerCase()
+			// if (!(event.target.value.toLowerCase() == comparavel)) {
+			// 	element.classList.add("invisivel");
+			// } else{
+			// 	element.classList.remove("invisivel");
+			// }
 		});
 	} else {
 		filiados.each(function (index, element) {
