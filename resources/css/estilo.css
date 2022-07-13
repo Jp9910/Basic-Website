@@ -28,9 +28,31 @@
 table {
 	margin: 15px;
 }
+
+tr {
+	max-width: 200%;
+}
   
 td, th {
 	border: 1px solid #dddddd;
+}
+
+tfoot {
+	max-height: 100px;
+}
+
+.footer {
+	display: block;
+	border: none;
+}
+
+#input-pagina, #input-qntPorPag {
+	margin: 5px;
+	font-size: large;
+	max-width: 50px;
+	border: none;
+	-moz-appearance: textfield;
+	-webkit-appearance: none;
 }
 
 .filtro-pesquisa {
@@ -49,6 +71,8 @@ td, th {
 #div-botoes-filiados {
 	max-width: 100%;
 }
+
+
 
 /* .frase {
 	font-size: 20px;

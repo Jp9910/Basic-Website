@@ -35,7 +35,7 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	get('/empresas', 'public/views/empresa/empresa.html');
 	get('/editar-empresa', 'public/views/empresa/editar-empresa.html');
 	// api
-	get('/lista-empresas', 'src/api/empresa/get-empresas.php');
+	get('/lista-empresas', 'src/api/empresa/get-empresasPagina.php');
 	get('/empresa', 'src/api/empresa/get-empresaById.php');
 	post('/empresa', 'src/api/empresa/post-empresa.php');
 	put('/empresa', 'src/api/empresa/put-empresa.php');

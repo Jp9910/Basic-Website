@@ -23,11 +23,22 @@ class EmpresaController extends Controller
 	*
 	* @return array
 	*/
+
+	// Not yet used
 	public function getEmpresas(): array
 	{
 		$rPdo = DBConnector::createConnection();
 		$rDao = new EmpresaPdoDao($rPdo);
 		$loEmpresas = $rDao->getAll();
+		return $loEmpresas;
+	}
+
+	public function getEmpresasPagina(?int $pagina, ?int $qntPorPag): array
+	{
+		$qntPorPag = filter_var($qntPorPag, FILTER_SANITIZE_NUMBER_INT);
+		$rPdo = DBConnector::createConnection();
+		$rDao = new EmpresaPdoDao($rPdo);
+		$loEmpresas = $rDao->getPagina($pagina, $qntPorPag);
 		return $loEmpresas;
 	}
 

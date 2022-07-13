@@ -8,3 +8,5 @@ o cpf, rg, telefone, celular, não seja composto por números (permitir "." e "-
 
 4. Permissao de acessar as rotas quando não estiver logado/!isAdmin deveria dar um feedback ou
 redirecionar para a página de login
+
+5. Limitar a paginação pegando o número total de linhas de certa tabela.

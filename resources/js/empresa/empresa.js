@@ -28,16 +28,39 @@ function adicionarFuncaoBotaoAdicionarEmpresa()
 	});
 }
 
+function proximaPagina()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	inputPagina.val(parseInt(valorDoInput)+1);
+	console.log("prox pag: "+inputPagina.val())
+	getEmpresasAjax()
+}
+
+function paginaAnterior()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	if(valorDoInput > 1) {
+		inputPagina.val(parseInt(valorDoInput)-1);
+		console.log("pag ant: "+inputPagina.val())
+		getEmpresasAjax()
+	}
+}
+
 function getEmpresasAjax()
 {
-	$.get("lista-empresas", montarTabelaEmpresas, "json");
+	let pagina = $('#input-pagina').val();
+	let qntPorPag = $('#input-qntPorPag').val();
+	console.log(qntPorPag)
+	$.get("lista-empresas?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaEmpresas, "json");
 }
 
 function montarTabelaEmpresas(data, textStatus, jqXHR)
 {
-	console.log(data);
-	console.log(textStatus);
-	console.log(jqXHR);
+	// console.log(data);
+	// console.log(textStatus);
+	// console.log(jqXHR);
 	let $tbody = $('tbody');
 	$tbody.html('');
 	$.each(data, function(){

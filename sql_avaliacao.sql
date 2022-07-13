@@ -115,3 +115,6 @@ CREATE TABLE dpe_dependente (
 
 SELECT * FROM dpe_dependente;
 DROP TABLE dpe_dependente;
+
+USE sindicato_trainees;
+SELECT * FROM ema_empresa LIMIT 2,3;

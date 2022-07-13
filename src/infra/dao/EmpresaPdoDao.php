@@ -27,6 +27,18 @@ class EmpresaPdoDao implements EmpresaDao
 		return $this->loadEmpresas($stmt);
 	}
 
+	public function getPagina(?int $pagina, ?int $quantidade): array
+	{
+		if (isset($pagina) and isset($quantidade)) {
+			$sql = 'SELECT * FROM ema_empresa LIMIT ? OFFSET ?';
+			$stmt = $this->rConexao->prepare($sql);
+			$stmt->bindValue(1, ($quantidade), PDO::PARAM_INT);
+			$stmt->bindValue(2, (($pagina*$quantidade)-$quantidade), PDO::PARAM_INT);
+			$stmt->execute();
+			return $this->loadEmpresas($stmt);
+		}
+	}
+
 	public function findById(int $id): Empresa
 	{
 		$query = 'SELECT * FROM ema_empresa WHERE ema_id = ?';

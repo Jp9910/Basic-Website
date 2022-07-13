@@ -44,6 +44,46 @@
 
 				<!-- pegar as variáveis usando ajax (get endpoint usuarios)--> 
 			</tbody>
+			<tfoot class="footer center-align">
+				<tr class="footer">
+					<td class="footer">
+						<label for="input-qntPorPag">Quantidade de resultados por página</label>
+						<input
+							value="3"
+							type="number"
+							onchange="getEmpresasAjax()"
+							id="input-qntPorPag"
+							name="qntPorPag"
+							min="1"
+						/>
+						<br>
+						<button
+							class="btn-floating btn-small waves-effect waves-light"
+							onclick="paginaAnterior()"
+							id="botao-pagina-anterior"
+						>
+							<i class="material-icons right">arrow_left</i>
+						</button>
+						<label for="input-pagina">Página</label>
+						<input
+							value="1"
+							type="number"
+							onchange="getEmpresasAjax()"
+							placeholder="pag"
+							id="input-pagina"
+							name="pagina"
+							min="1"
+						/>
+						<button
+							class="btn-floating btn-small waves-effect waves-light"
+							onclick="proximaPagina()"
+							id="botao-pagina-posterior"
+						>
+							<i class="material-icons right">arrow_right</i>
+						</button>
+					</td>
+				</tr>
+			</tfoot>  
 		</table>
 	</div>
     <script src="resources/libs/jquery-3.6.0.js"></script>

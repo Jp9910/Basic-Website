@@ -7,7 +7,7 @@ use JsonSerializable;
 /**
  * @version 1.0.0 Versionamento inicial da classe
  */
-class Empresa implements JsonSerializable
+class Empresa extends Model implements JsonSerializable
 {
 	private ?int $id;
 	private string $sNome;
