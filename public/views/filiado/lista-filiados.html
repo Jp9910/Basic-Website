@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Filiado</title>
-    <link rel="icon" href="public/img/indice.png">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Filiado</title>
+	<link rel="icon" href="public/img/indice.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
 </head>
 <body>
-    <div id="navbar"></div>
-    <h4 class="center">Filiados</h4>
-    <div class="row">
+	<div id="navbar"></div>
+	<h4 class="center">Filiados</h4>
+	<div class="row">
 		<div class="center">
 			<p class="info" id="p-info">Info</p>
 		</div>
-        <div id="acoes-filiados" class="col s12">
-            <div class="input-field col s3 offset-s2">
-                <i class="material-icons prefix">search</i>
-                <input placeholder="Buscar por nome ou data" id="input-filtro" name="filtro" type="text">
-            </div>
-            <div id="div-botoes-filiados" class="col offset-s2">
-                <button class="btn waves-effect waves-light green" id="botao-atualizar" type="button">
-                    <i class="material-icons">update</i>
-                </button>
-                <button class="btn waves-effect waves-light blue" onclick="location.href='cadastro-filiado'" id="botao-adicionar" type="button">
-                    Adicionar Filiado
-                    <i class="material-icons right">arrow_right</i>
-                </button>
-            </div>
-        </div>
-        <table id="tabela-filiados" class="centered row col s8 offset-s2 striped responsive-table">
+		<div id="acoes-filiados" class="col s12">
+			<div class="input-field col s3 offset-s2">
+				<i class="material-icons prefix">search</i>
+				<input placeholder="Buscar por nome ou data" id="input-filtro" name="filtro" type="text">
+			</div>
+			<div id="div-botoes-filiados" class="col offset-s2">
+				<button class="btn waves-effect waves-light green" id="botao-atualizar" type="button">
+					<i class="material-icons">update</i>
+				</button>
+				<button class="btn waves-effect waves-light blue" onclick="location.href='cadastro-filiado'" id="botao-adicionar" type="button">
+					Adicionar Filiado
+					<i class="material-icons right">arrow_right</i>
+				</button>
+			</div>
+		</div>
+		<table id="tabela-filiados" class="centered row col s8 offset-s2 striped responsive-table">
 			<thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>RG</th>
-                    <th>Data de Nascimento</th>
-                    <th>Idade</th>
-                    <th>Telefone</th>
-                    <th>Celular</th>
-                    <th>Empresa</th>
-                    <th>Cargo</th>
-                    <th>Situação</th>
-                    <th></th>
-                </tr>
+				<tr>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>RG</th>
+					<th>Data de Nascimento</th>
+					<th>Idade</th>
+					<th>Telefone</th>
+					<th>Celular</th>
+					<th>Empresa</th>
+					<th>Cargo</th>
+					<th>Situação</th>
+					<th></th>
+				</tr>
 			</thead>
 			<tbody>
 				<!-- montar a tabela dinamicamente usando javascript --> 
@@ -55,7 +55,7 @@
 			</tbody>
 		</table>
 	</div>
-    <script src="resources/libs/jquery-3.6.0.js"></script>
+	<script src="resources/libs/jquery-3.6.0.js"></script>
 	<script type="text/javascript" src="resources/libs/materialize/js/materialize.js"></script>
 	<script type="text/javascript" src="resources/js/filiado/lista-filiados.js"></script>
 	<script type="text/javascript"> $('#navbar').load('/navbar'); </script>

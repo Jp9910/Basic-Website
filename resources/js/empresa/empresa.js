@@ -1,31 +1,31 @@
 
 $(document).ready(function () {
-    getEmpresasAjax();
-    adicionarFuncaoBotaoAdicionarEmpresa();
-    $('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
+	getEmpresasAjax();
+	adicionarFuncaoBotaoAdicionarEmpresa();
+	$('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
 });
 
 function adicionarFuncaoBotaoAdicionarEmpresa()
 {
-    $('#botao-enviar').click(function(e) {
-        e.preventDefault();
-        let nome = $('#input-nome').val();
-        let request = $.ajax({
-            url: "empresa",
-            type: 'POST',
-            data: {
-                nome: nome
-            },
-            success: function(result) {
-                getEmpresasAjax();
+	$('#botao-enviar').click(function(e) {
+		e.preventDefault();
+		let nome = $('#input-nome').val();
+		let request = $.ajax({
+			url: "empresa",
+			type: 'POST',
+			data: {
+				nome: nome
+			},
+			success: function(result) {
+				getEmpresasAjax();
 				$('#p-info').text('Empresa "'+nome+'" adicionada.');
-                $('#p-info').show();
-            }
-        }).fail(function(jqXHR, textStatus, errorThrown){
-            $('#p-info').text(textStatus + ". " + errorThrown);
-            $('#p-info').show();
-        });
-    });
+				$('#p-info').show();
+			}
+		}).fail(function(jqXHR, textStatus, errorThrown){
+			$('#p-info').text(textStatus + ". " + errorThrown);
+			$('#p-info').show();
+		});
+	});
 }
 
 function getEmpresasAjax()
@@ -39,7 +39,7 @@ function montarTabelaEmpresas(data, textStatus, jqXHR)
 	console.log(textStatus);
 	console.log(jqXHR);
 	let $tbody = $('tbody');
-    $tbody.html('');
+	$tbody.html('');
 	$.each(data, function(){
 		let linha = novaLinha(this);
 		linha.find('.botao-editar').on('click')

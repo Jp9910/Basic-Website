@@ -11,7 +11,7 @@ $request = $requestManager->getRequest();
 
 $oController = new EmpresaController();
 $sResultadoJson = $oController->criarEmpresa(
-    $request['nome']
+	$request['nome']
 );
 
 $status = json_decode($sResultadoJson);

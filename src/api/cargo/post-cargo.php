@@ -10,7 +10,7 @@ $request = $requestManager->getRequest();
 
 $oController = new CargoController();
 $sResultadoJson = $oController->criarCargo(
-    $request['nome']
+	$request['nome']
 );
 
 $status = json_decode($sResultadoJson);

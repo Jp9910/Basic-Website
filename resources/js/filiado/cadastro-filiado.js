@@ -1,45 +1,45 @@
 
 $(document).ready(function () {
-    getFiliadosAjax();
-    adicionarFuncaoBotaoAdicionarFiliado();
-    $('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
+	getFiliadosAjax();
+	adicionarFuncaoBotaoAdicionarFiliado();
+	$('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
 });
 
 function adicionarFuncaoBotaoAdicionarFiliado()
 {
-    $('#botao-enviar').click(function(e) {
-        e.preventDefault();
-        $('#botao-enviar').attr("disabled","true");
-        $.ajax({
-            url: "filiado",
-            type: 'POST',
-            data: {
-                nome: $('#input-nome').val(),
-                CPF: $('#input-CPF').val(),
-                RG: $('#input-RG').val(),
-                dataNascimento: $('#input-dataNascimento').val(),
-                idade: $('#input-idade').val(),
-                telefone: $('#input-telefone').val(),
-                celular: $('#input-celular').val(),
-                empresa: $('#input-empresa').val(),
-                cargo: $('#input-cargo').val(),
-                situacao: $('#input-situacao').val()
-            },
-            success: function(result) {
-                $('#teste').append(result);
-                getFiliadosAjax();
+	$('#botao-enviar').click(function(e) {
+		e.preventDefault();
+		$('#botao-enviar').attr("disabled","true");
+		$.ajax({
+			url: "filiado",
+			type: 'POST',
+			data: {
+				nome: $('#input-nome').val(),
+				CPF: $('#input-CPF').val(),
+				RG: $('#input-RG').val(),
+				dataNascimento: $('#input-dataNascimento').val(),
+				idade: $('#input-idade').val(),
+				telefone: $('#input-telefone').val(),
+				celular: $('#input-celular').val(),
+				empresa: $('#input-empresa').val(),
+				cargo: $('#input-cargo').val(),
+				situacao: $('#input-situacao').val()
+			},
+			success: function(result) {
+				$('#teste').append(result);
+				getFiliadosAjax();
 				$('#p-info').text('Filiado "'+$('#input-nome').val()+'" adicionado.');
-                $('#p-info').show();
-                $('#spinner').show();
-                setTimeout(function(){
-                    window.location.replace(window.location.href)
-                }, 3000);
-            }
-        }).fail(function(jqXHR, textStatus, errorThrown){
-            $('#p-info').text(textStatus + ". " + errorThrown);
-            $('#p-info').show();
-        });
-    });
+				$('#p-info').show();
+				$('#spinner').show();
+				setTimeout(function(){
+					window.location.replace(window.location.href)
+				}, 3000);
+			}
+		}).fail(function(jqXHR, textStatus, errorThrown){
+			$('#p-info').text(textStatus + ". " + errorThrown);
+			$('#p-info').show();
+		});
+	});
 }
 
 function getFiliadosAjax()
@@ -53,7 +53,7 @@ function montarTabelaFiliados(data, textStatus, jqXHR)
 	console.log(textStatus);
 	console.log(jqXHR);
 	let $tbody = $('tbody');
-    $tbody.html('');
+	$tbody.html('');
 	$.each(data, function(){
 		let linha = novaLinha(this);
 		linha.find('.botao-editar').on('click')

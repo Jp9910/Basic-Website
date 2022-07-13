@@ -10,7 +10,7 @@ $request = $requestManager->getRequest();
 
 $oController = new SituacaoController();
 $sResultadoJson = $oController->criarSituacao(
-    $request['nome']
+	$request['nome']
 );
 
 $status = json_decode($sResultadoJson);

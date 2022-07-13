@@ -8,8 +8,8 @@ use Jp\SindicatoTrainees\infra\gerenciadores\RequestManager;
 // id está sendo passado dinamicamente na url (sem ser como parâmetro get)
 $id = filter_var($id, FILTER_VALIDATE_INT);
 if (is_null($id) or $id === false) {
-    header("HTTP/1.1 400 Bad Request. Id deve ser um inteiro.");
-    exit();
+	header("HTTP/1.1 400 Bad Request. Id deve ser um inteiro.");
+	exit();
 }
 
 $request_body = file_get_contents('php://input');
@@ -24,11 +24,11 @@ $request = $requestManager->getRequest();
 
 $oController = new UsuarioController();
 $sResultadoJson = $oController->editarUsuario(
-    $id,
-    $request['nome'],
-    $request['login'],
-    $request['senha'],
-    $request['tipo_usuario']
+	$id,
+	$request['nome'],
+	$request['login'],
+	$request['senha'],
+	$request['tipo_usuario']
 );
 
 // Enviar resposta
@@ -48,13 +48,13 @@ header("HTTP/1.1 200 Usuário editado.");
 /*
 // Processar os parâmetros usando a URL. Em vez disso, usarei o RequestManager
 // para pegar os parâmetros pela global $_REQUEST
-    // Initialize URL to the variable
-    $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-    $url_components = parse_url($url);
-    parse_str($url_components['query'], $params);
-    var_dump($params);
-    var_dump($_REQUEST);
-    exit();
+	// Initialize URL to the variable
+	$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$url_components = parse_url($url);
+	parse_str($url_components['query'], $params);
+	var_dump($params);
+	var_dump($_REQUEST);
+	exit();
 */
 
 

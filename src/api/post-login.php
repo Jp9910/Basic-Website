@@ -24,20 +24,20 @@ $status = json_decode($json);
 // farei usando a session do php.
 
 if ($status->status === 200) {
-    $sessionManager = SessionManager::getInstance();
-    $sessionManager->endSessao();
-    $sessionManager->startSessao();
-    $sessionManager->setSessionVariable('usuario_id', $status->usuario->id);
-    $sessionManager->setSessionVariable('usuario_login', $status->usuario->login);
-    $sessionManager->setSessionVariable('usuario_nome', $status->usuario->nome);
-    $sessionManager->setSessionVariable('usuario_isAdmin', $status->usuario->isAdmin);
-    $sessionManager->setSessionVariable('logado', true);
-    $sessionManager->setSessionVariable('mensagem', $status->status_text);
-    $sessionManager->setSessionVariable('tipo_mensagem', 'sucess');
-    //$sessao = $sessionManager->getSessao();
-    //var_dump($sessao);
-    header("Location: /home", true, 302);
-    exit();
+	$sessionManager = SessionManager::getInstance();
+	$sessionManager->endSessao();
+	$sessionManager->startSessao();
+	$sessionManager->setSessionVariable('usuario_id', $status->usuario->id);
+	$sessionManager->setSessionVariable('usuario_login', $status->usuario->login);
+	$sessionManager->setSessionVariable('usuario_nome', $status->usuario->nome);
+	$sessionManager->setSessionVariable('usuario_isAdmin', $status->usuario->isAdmin);
+	$sessionManager->setSessionVariable('logado', true);
+	$sessionManager->setSessionVariable('mensagem', $status->status_text);
+	$sessionManager->setSessionVariable('tipo_mensagem', 'sucess');
+	//$sessao = $sessionManager->getSessao();
+	//var_dump($sessao);
+	header("Location: /home", true, 302);
+	exit();
 }
 $sessionManager = SessionManager::getInstance();
 //$sessionManager->endSessao();
