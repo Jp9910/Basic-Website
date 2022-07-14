@@ -29,8 +29,8 @@ table {
 	margin: 15px;
 }
 
-tr {
-	max-width: 200%;
+td {
+	display: table-cell;
 }
   
 td, th {

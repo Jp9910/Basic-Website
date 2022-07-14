@@ -13,7 +13,7 @@ $sessao = $sessionManager->getSessao();
 	<title>Home Page Sindicato</title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
-	<link rel="stylesheet" type="text/css" href="resources/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="public/css/estilo.css">
 	<link rel="icon" href="public/img/indice.png">
 </head>
 <body class="teal accent-2">
