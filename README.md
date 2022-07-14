@@ -58,7 +58,6 @@ Você foi contratado para desenvolver um sistema para o Sindicato dos Trainees, 
 - CSS
 - JavaScript
 - jQuery
-- FPDF
 - Docker
 - MySQL
 - MySQL Workbench
@@ -72,5 +71,6 @@ Você foi contratado para desenvolver um sistema para o Sindicato dos Trainees, 
 ![Tela Editar Usuario](/docs/img/editar-usuario.png)
 ![Tela Empresas](/docs/img/empresa.png)
 ![Tela Editar Empresa](/docs/img/editar-empresa.png)
+![Tela Listar Filiados](/docs/img/filiados.png)
 ![Tela Cadastro Filiado](/docs/img/cadastro-filiado.png)
 ![Tela Editar Filiado](/docs/img/editar-filiado.png)
