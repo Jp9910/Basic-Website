@@ -32,7 +32,7 @@ function getSituacaosAjax()
 {
 	let pagina = $('#input-pagina').val();
 	let qntPorPag = $('#input-qntPorPag').val();
-	$.get("lista-situacaos?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaSituacaos, "json");
+	$.get("pagina-situacaos?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaSituacaos, "json");
 }
 
 function proximaPagina()

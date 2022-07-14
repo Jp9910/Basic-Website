@@ -17,14 +17,12 @@ class EmpresaController extends Controller
 	*
 	* Retorna a lista de empresas cadastradas no sistema
 	*
-	* Cria uma conexão com o BD e usa o DAO para consultar os usuários no sistema.
+	* Cria uma conexão com o BD e usa o DAO para consultar as empresas no sistema.
 	*
 	* @author Joao Paulo joaopaulo@moobitech.com.br
 	*
 	* @return array
 	*/
-
-	// Not yet used
 	public function getEmpresas(): array
 	{
 		$rPdo = DBConnector::createConnection();

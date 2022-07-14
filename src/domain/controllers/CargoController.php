@@ -24,7 +24,6 @@ class CargoController extends Controller
 	* @return array
 	*/
 
-	// @NOTE: Not yet used
 	public function getCargos(): array
 	{
 		$rPdo = DBConnector::createConnection();

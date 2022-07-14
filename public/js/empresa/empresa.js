@@ -53,7 +53,7 @@ function getEmpresasAjax()
 	let pagina = $('#input-pagina').val();
 	let qntPorPag = $('#input-qntPorPag').val();
 	console.log(qntPorPag)
-	$.get("lista-empresas?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaEmpresas, "json");
+	$.get("pagina-empresas?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaEmpresas, "json");
 }
 
 function montarTabelaEmpresas(data, textStatus, jqXHR)

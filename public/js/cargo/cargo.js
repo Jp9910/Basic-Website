@@ -32,7 +32,7 @@ function getCargosAjax()
 {
 	let pagina = $('#input-pagina').val();
 	let qntPorPag = $('#input-qntPorPag').val();
-	$.get("lista-cargos?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaCargos, "json");
+	$.get("pagina-cargos?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaCargos, "json");
 }
 
 function proximaPagina()

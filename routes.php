@@ -18,7 +18,7 @@ require_once 'vendor/autoload.php';
 if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true and $_SESSION['usuario_isAdmin']) {
 // USUARIOS
 	// views
-	get('/cadastro', 'public/views/usuario/cadastro.html');
+	get('/cadastro', 'public/views/usuario/cadastro-usuario.html');
 	get('/listar-usuarios', 'public/views/usuario/lista-usuarios.html');
 	//?usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
 	get('/editar-usuario', 'public/views/usuario/editar-usuario.html');
@@ -35,7 +35,8 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	get('/empresas', 'public/views/empresa/empresa.html');
 	get('/editar-empresa', 'public/views/empresa/editar-empresa.html');
 	// api
-	get('/lista-empresas', 'src/api/empresa/get-empresasPagina.php');
+	get('/all-empresas', 'src/api/empresa/get-allEmpresas.php');
+	get('/pagina-empresas', 'src/api/empresa/get-empresasPagina.php');
 	get('/empresa', 'src/api/empresa/get-empresaById.php');
 	post('/empresa', 'src/api/empresa/post-empresa.php');
 	put('/empresa', 'src/api/empresa/put-empresa.php');
@@ -46,7 +47,8 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	get('/cargos', 'public/views/cargo/cargo.html');
 	get('/editar-cargo', 'public/views/cargo/editar-cargo.html');
 	// api
-	get('/lista-cargos', 'src/api/cargo/get-cargosPagina.php');
+	get('/all-cargos', 'src/api/cargo/get-allCargos.php');
+	get('/pagina-cargos', 'src/api/cargo/get-cargosPagina.php');
 	get('/cargo', 'src/api/cargo/get-cargoById.php');
 	post('/cargo', 'src/api/cargo/post-cargo.php');
 	put('/cargo', 'src/api/cargo/put-cargo.php');
@@ -57,7 +59,8 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	get('/situacoes', 'public/views/situacao/situacao.html');
 	get('/editar-situacao', 'public/views/situacao/editar-situacao.html');
 	// api
-	get('/lista-situacaos', 'src/api/situacao/get-situacaosPagina.php');
+	get('/all-situacaos', 'src/api/situacao/get-allSituacaos.php');
+	get('/pagina-situacaos', 'src/api/situacao/get-situacaosPagina.php');
 	get('/situacao', 'src/api/situacao/get-situacaoById.php');
 	post('/situacao', 'src/api/situacao/post-situacao.php');
 	put('/situacao', 'src/api/situacao/put-situacao.php');

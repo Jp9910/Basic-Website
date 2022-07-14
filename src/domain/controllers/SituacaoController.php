@@ -24,7 +24,6 @@ class SituacaoController extends Controller
 	* @return array
 	*/
 
-	// @NOTE: Not yet used
 	public function getSituacaos(): array
 	{
 		$rPdo = DBConnector::createConnection();

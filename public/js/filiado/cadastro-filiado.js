@@ -1,6 +1,8 @@
 
 $(document).ready(function () {
-	getFiliadosAjax();
+	buscarEmpresasAjax();
+	buscarCargosAjax();
+	buscarSituacaosAjax();
 	adicionarFuncaoBotaoAdicionarFiliado();
 	$('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
 });
@@ -27,7 +29,6 @@ function adicionarFuncaoBotaoAdicionarFiliado()
 			},
 			success: function(result) {
 				$('#teste').append(result);
-				getFiliadosAjax();
 				$('#p-info').text('Filiado "'+$('#input-nome').val()+'" adicionado.');
 				$('#p-info').show();
 				$('#spinner').show();
@@ -42,36 +43,44 @@ function adicionarFuncaoBotaoAdicionarFiliado()
 	});
 }
 
-function getFiliadosAjax()
+function buscarEmpresasAjax()
 {
-	$.get("lista-filiados", montarTabelaFiliados, "json");
+	$.get("/all-empresas", montarSelectEmpresas, "json");
 }
 
-function montarTabelaFiliados(data, textStatus, jqXHR)
+function buscarCargosAjax()
 {
-	console.log(data);
-	console.log(textStatus);
-	console.log(jqXHR);
-	let $tbody = $('tbody');
-	$tbody.html('');
-	$.each(data, function(){
-		let linha = novaLinha(this);
-		linha.find('.botao-editar').on('click')
-		$tbody.append(linha);
-	})
+	$.get("/all-cargos", montarSelectCargos, "json");
 }
 
-function novaLinha(filiado)
+function buscarSituacaosAjax()
 {
-	let linha = $('<tr>');
-	let colunaNome = $('<td>').text(filiado.nome);
-	let colunaEditar = $('<td>');
-	let linkEditar = $("<a>").attr("href","/editar-filiado?id="+filiado.id).addClass("botao-editar");
-	let iconeEditar = $("<i>").addClass("small").addClass("material-icons").text("edit");
-	linkEditar.append(iconeEditar);
-	colunaEditar.append(linkEditar);
-	linha.append(colunaNome);
-	linha.append(colunaEditar);
+	$.get("/all-situacaos", montarSelectSituacaos, "json");
+}
 
-	return linha
+function montarSelectEmpresas(data)
+{
+	let select = $('#select-empresa');
+	data.forEach(element => {
+		let option = $('<option>').attr('value',element.id).text(element.nome);
+		select.append(option);
+	});
+}
+
+function montarSelectCargos(data)
+{
+	let select = $('#select-cargo');
+	data.forEach(element => {
+		let option = $('<option>').attr('value',element.id).text(element.nome);
+		select.append(option);
+	});
+}
+
+function montarSelectSituacaos(data)
+{
+	let select = $('#select-situacao');
+	data.forEach(element => {
+		let option = $('<option>').attr('value',element.id).text(element.nome);
+		select.append(option);
+	});
 }

@@ -72,7 +72,9 @@ tfoot {
 	max-width: 100%;
 }
 
-
+select {
+	display: block;
+}
 
 /* .frase {
 	font-size: 20px;

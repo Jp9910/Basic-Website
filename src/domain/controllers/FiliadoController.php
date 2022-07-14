@@ -26,7 +26,6 @@ class FiliadoController extends Controller
 	* @return array
 	*/
 
-	// @NOTE: Not yet used
 	public function getFiliados(): array
 	{
 		$rPdo = DBConnector::createConnection();
