@@ -64,7 +64,7 @@ Você foi contratado para desenvolver um sistema para o Sindicato dos Trainees, 
 - MySQL Workbench
 - Apache
 
-##Telas
+## Telas
 ![Tela HomePage](/docs/img/homepage.png)
 ![Tela Login](/docs/img/login.png)
 ![Tela Lista de Usuarios](/docs/img/lista-usuarios.png)
