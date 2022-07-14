@@ -32,6 +32,15 @@ class UsuarioController extends Controller
 		return $loUsuarios;
 	}
 
+	public function getUsuariosPagina(?int $pagina=1, ?int $qntPorPag=3): array
+	{
+		$qntPorPag = filter_var($qntPorPag, FILTER_SANITIZE_NUMBER_INT);
+		$rPdo = DBConnector::createConnection();
+		$rDao = new UsuarioPdoDao($rPdo);
+		$loEmpresas = $rDao->getPagina($pagina, $qntPorPag);
+		return $loEmpresas;
+	}
+
 	public function getUsuarioById(int $id)
 	{
 		$id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);

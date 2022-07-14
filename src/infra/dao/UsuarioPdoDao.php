@@ -27,6 +27,18 @@ class UsuarioPdoDao implements UsuarioDao
 		return $this->loadUsuarios($stmt);
 	}
 
+	public function getPagina(?int $pagina, ?int $quantidade): array
+	{
+		if (isset($pagina) and isset($quantidade)) {
+			$sql = 'SELECT * FROM uso_usuarios LIMIT ? OFFSET ?';
+			$stmt = $this->rConexao->prepare($sql);
+			$stmt->bindValue(1, ($quantidade), PDO::PARAM_INT);
+			$stmt->bindValue(2, (($pagina*$quantidade)-$quantidade), PDO::PARAM_INT);
+			$stmt->execute();
+			return $this->loadUsuarios($stmt);
+		}
+	}
+
 	public function findById(int $id): Usuario
 	{
 		$query = 'SELECT * FROM uso_usuarios WHERE uso_id = ?';

@@ -23,7 +23,7 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true and $_SESSION['u
 	//?usar url dinamica ou usar um parametro get e pega-lo usando o php/javascript?
 	get('/editar-usuario', 'public/views/usuario/editar-usuario.html');
 	// api
-	get('/usuarios', 'src/api/usuario/get-usuarios.php'); //instanciar o controller e chamar a função para pegar os usuários
+	get('/usuarios', 'src/api/usuario/get-usuariosPagina.php'); //instanciar o controller e chamar a função para pegar os usuários
 	get('/usuario/$id', 'src/api/usuario/get-usuarioById.php');
 	post('/criar-usuario', 'src/api/usuario/post-cadastro.php');
 	put('/usuario/$id', 'src/api/usuario/put-editarUsuario.php');

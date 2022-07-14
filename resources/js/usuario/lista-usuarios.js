@@ -6,21 +6,34 @@ $(document).ready(function () {
 
 function getUsuariosAjax()
 {
-	$.get("usuarios", montarTabelaUsuarios, "json");
+	let pagina = $('#input-pagina').val();
+	let qntPorPag = $('#input-qntPorPag').val();
+	$.get("usuarios?pagina="+pagina+"&quantidade="+qntPorPag, montarTabelaUsuarios, "json");
 }
 
-function editarUsuario()
+function proximaPagina()
 {
-	;
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	inputPagina.val(parseInt(valorDoInput)+1);
+	getUsuariosAjax()
+}
+
+function paginaAnterior()
+{
+	let inputPagina = $('#input-pagina');
+	valorDoInput = inputPagina.val()
+	if(valorDoInput > 1) {
+		inputPagina.val(parseInt(valorDoInput)-1);
+		getUsuariosAjax()
+	}
 }
 
 function montarTabelaUsuarios(data, textStatus, jqXHR)
 {
 	//escrever o html na página, usando o resultado (data)
-	console.log(data);
-	console.log(textStatus);
-	console.log(jqXHR);
 	let $tbody = $('tbody');
+	$tbody.html('');
 	$.each(data, function(){
 		let linha = novaLinha(this);
 		linha.find('.botao-editar').on('click')
