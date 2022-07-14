@@ -1,7 +1,15 @@
 <?php 
-
 /**
- * API POST - Faz a checagem da informação de login e retorna o status em json.
+ * A middleware component is an individual component participating, often together with 
+ * other middleware components, in the processing of an incoming request and the creation
+ * of a resulting response, as defined by PSR-7.
+ * 
+ * A middleware component MAY create and return a response without delegating to a request 
+ * handler, if sufficient conditions are met.
+ */
+/**
+ * POST
+ * Faz a checagem da informação de login e retorna o status em json.
  */
 
 namespace Jp\SindicatoTrainees\api;
