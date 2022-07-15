@@ -1,12 +1,44 @@
 # Sindicato dos Trainees
 
-Aplicativo web desenvolvido em PHP puro, HTML, e Javascript
+Sistema web desenvolvido em PHP, HTML, e Javascript, com banco de dados MySQL.
 
 Roteador (router.php) desenvolvido por [phprouter](https://github.com/phprouter) - <https://github.com/phprouter/main>
 
+## Tecnologias, Bibliotecas e Ferramentas utilizadas.
+- Php
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Docker
+- MySQL
+- MySQL Workbench
+- Apache
+
+## Estrutura do projeto
+- O projeto segue o padrão arquitetural **MVC**
+
+### Organização dos diretórios
+- .vscode: Configurações do vscode
+- docs: Arquivos de documentação
+- public: Arquivos que o cliente terá acesso
+- resources: Bibliotecas utilizadas
+- src: Código do servidor
+
+## Telas
+![Tela HomePage](/docs/img/homepage.png)
+![Tela Login](/docs/img/login.png)
+![Tela Lista de Usuarios](/docs/img/lista-usuarios.png)
+![Tela Cadastro Usuario](/docs/img/cadastro-usuario.png)
+![Tela Editar Usuario](/docs/img/editar-usuario.png)
+![Tela Empresas](/docs/img/empresa.png)
+![Tela Editar Empresa](/docs/img/editar-empresa.png)
+![Tela Listar Filiados](/docs/img/filiados.png)
+![Tela Cadastro Filiado](/docs/img/cadastro-filiado.png)
+![Tela Editar Filiado](/docs/img/editar-filiado.png)
+
 # Avaliação
 
-Preparado por Pedro Neto
 ## Overview & Propósito
 Avaliação referente aos dois primeiros módulos.
 
@@ -52,25 +84,3 @@ Você foi contratado para desenvolver um sistema para o Sindicato dos Trainees, 
 * Classe para gerenciar as configurações do sistema. As mesmas deve ser recuperadas de um arquivo .json
 * Classe genérica para gerenciar o acesso ao banco de dados e facilitar uma futura refatoração.
 
-## Tecnologias, Framework, Libs e Ferramentas utilizadas.
-- Php
-- HTML
-- CSS
-- JavaScript
-- jQuery
-- Docker
-- MySQL
-- MySQL Workbench
-- Apache
-
-## Telas
-![Tela HomePage](/docs/img/homepage.png)
-![Tela Login](/docs/img/login.png)
-![Tela Lista de Usuarios](/docs/img/lista-usuarios.png)
-![Tela Cadastro Usuario](/docs/img/cadastro-usuario.png)
-![Tela Editar Usuario](/docs/img/editar-usuario.png)
-![Tela Empresas](/docs/img/empresa.png)
-![Tela Editar Empresa](/docs/img/editar-empresa.png)
-![Tela Listar Filiados](/docs/img/filiados.png)
-![Tela Cadastro Filiado](/docs/img/cadastro-filiado.png)
-![Tela Editar Filiado](/docs/img/editar-filiado.png)

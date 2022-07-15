@@ -47,7 +47,7 @@ function adicionarFuncaoBotaoAdicionarFiliado()
 				info.show();
 				$('#spinner').show();
 				setTimeout(function(){
-					//window.location.replace(window.location.href)
+					window.location.replace(window.location.href)
 				}, 3000);
 			}
 		}).fail(function(jqXHR, textStatus, errorThrown){
