@@ -81,10 +81,44 @@
 					<select id="select-situacao" name="situacao"><!--Adicionar opções pelo javascript --></select>
 				</div>
 			</div>
+			<br>
+			<h5 class="center">Dependentes</h5>
+			<br><br>
+			<section id="section-dependentes">
+				<input type="hidden" value="1" id="qnt-dependentes" name="qnt-dependentes">
+				<div class="row" id="dependente-1">
+					<div class="input-field col s3 offset-s2">
+						<i class="material-icons prefix">person</i>
+						<input placeholder="Nome do dependente" id="input-dependente-1-nome" name="dependente-1-nome" type="text">
+						<label for="input-dependente-1-nome">Nome do dependente</label>
+					</div>
+					<div class="input-field col s3">
+						<i class="material-icons prefix">date_range</i>
+						<input placeholder="2005-05-24" id="input-dependente-1-dataNascimento" name="dependente-1-dataNascimento" type="date">
+						<label for="input-dependente-1-dataNascimento">Data de nascimento do dependente</label>
+					</div>
+					<div class="input-field col s3">
+						<i class="material-icons prefix">supervisor_account</i>
+						<input placeholder="Neto" id="input-dependente-1-parentesco" name="dependente-1-parentesco" type="text">
+						<label for="input-dependente-1-parentesco">Grau de Parentesco</label>
+					</div>
+				</div>
+			</section>
+			<div class="center-align">
+				<button type="button" id="botao-adicionar-dependente" class="btn waves-effect waves-light green accent-3">
+					Adicionar Dependente
+					<i class="material-icons right">group_add</i>
+				</button>
+				<button type="button" id="botao-remover-dependente" class="btn waves-effect waves-light orange accent-3">
+					Remover Dependente
+					<i class="material-icons right"></i>
+				</button>
+			</div>
+			<br><br><br>
 			<div class="center-align">
 				<button type="button" id="botao-enviar" class="btn waves-effect waves-light">
-					Cadastrar
-					<i class="material-icons right">group_add</i>
+					Cadastrar Filiado
+					<i class="material-icons right">send</i>
 				</button>
 			</div>
 			<span id="teste"></span>

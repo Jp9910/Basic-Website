@@ -4,6 +4,8 @@ $(document).ready(function () {
 	buscarCargosAjax();
 	buscarSituacaosAjax();
 	adicionarFuncaoBotaoAdicionarFiliado();
+	adicionarFuncaoBotaoAdicionarDependente();
+	adicionarFuncaoBotaoRemoverDependente();
 	$('#navbar').load('/navbar'); // loads the html from route /navbar in the #navbar component
 });
 
@@ -82,5 +84,64 @@ function montarSelectSituacaos(data)
 	data.forEach(element => {
 		let option = $('<option>').attr('value',element.id).text(element.nome);
 		select.append(option);
+	});
+}
+
+function adicionarFuncaoBotaoAdicionarDependente()
+{
+	$('#botao-adicionar-dependente').click(function(e){
+		// Criando as tags html dinamicamente
+		// e.preventDefault();
+		// let qntDependentes = $('#qnt-dependentes');
+		// let valorQnt = qntDependentes.val();
+		// qntDependentes.val(parseInt(valorQnt)+1);
+		// let section = $('#section-dependentes');
+		// linha = $('<div>').addClass("row");
+		// 	divNome = $('<div>').addClass("input-field col s3 offset-s2");
+		// 		i = $('<i>').addClass("material-icons prefix").text('person');
+		// 		input = $('<input>').attr({id:"input-dependente-nome", name:"dependente-nome", type:"text"});
+		// 		label = $('<label>').attr("for","input-dependente-"+qntDependentes+"-nome").text("Nome do dependente");
+		
+		// divNome.append(i).append(input).append(label);
+		// linha.append(divNome);
+		// section.append(linha);
+
+		// Mais fácil retornar html puro
+		let qntDependentes = $('#qnt-dependentes');
+		let valorQnt = qntDependentes.val();
+		valorQnt = parseInt(valorQnt) + 1;
+		qntDependentes.val(valorQnt);
+		let section = $('#section-dependentes');
+		section.append(`
+		<div class="row" id="dependente-${valorQnt}">
+			<div class="input-field col s3 offset-s2">
+				<i class="material-icons prefix">person</i>
+				<input id="input-dependente-${valorQnt}-nome" name="dependente-${valorQnt}-nome" type="text">
+				<label for="input-dependente-${valorQnt}-nome">Nome do dependente ${valorQnt}</label>
+			</div>
+			<div class="input-field col s3">
+				<i class="material-icons prefix">date_range</i>
+				<input id="input-dependente-${valorQnt}-dataNascimento" name="dependente-${valorQnt}-dataNascimento" type="date">
+				<label for="input-dependente-${valorQnt}-dataNascimento">Data de nascimento do dependente ${valorQnt}</label>
+			</div>
+			<div class="input-field col s3">
+				<i class="material-icons prefix">supervisor_account</i>
+				<input id="input-dependente-${valorQnt}-parentesco" name="dependente-${valorQnt}-parentesco" type="text">
+				<label for="input-dependente-${valorQnt}-parentesco">Grau de Parentesco do dependente ${valorQnt}</label>
+			</div>
+		</div>
+		`);
+	});
+}
+
+function adicionarFuncaoBotaoRemoverDependente()
+{
+	$('#botao-remover-dependente').click(function(e){
+		e.preventDefault();
+		let qntDependentes = $('#qnt-dependentes');
+		let valorQnt = qntDependentes.val();
+		$(`#dependente-${valorQnt}`).remove()
+		valorQnt = parseInt(valorQnt) - 1;
+		qntDependentes.val(valorQnt);
 	});
 }
