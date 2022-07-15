@@ -143,7 +143,7 @@ class FiliadoPdoDao implements FiliadoDao
 		$nome = $oFiliado->nome();
 		$telefone = $oFiliado->telefone();
 		$celular = $oFiliado->celular();
-		$dataUltimaAtualizacao = $oFiliado->dataUltimaAtualizacao()->format('Y-m-d');
+		$dataUltimaAtualizacao = $oFiliado->dataUltimaAtualizacao()->format('Y-m-d H:i:s');
 		$empresa = $oFiliado->empresa();
 		$cargo = $oFiliado->cargo();
 		$situacao = $oFiliado->situacao();

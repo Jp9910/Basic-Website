@@ -96,6 +96,7 @@ function novaLinha(filiado)
 	let colunaEmpresa = $('<td>').addClass("empresa").text(filiado.empresa);
 	let colunaCargo = $('<td>').addClass("cargo").text(filiado.cargo);
 	let colunaSituacao = $('<td>').addClass("situacao").text(filiado.situacao);
+	let colunaUltimaAtualizacao = $('<td>').addClass("ultimaAtualizacao").text(filiado.dataUltimaAtualizacao.date.substr(0,19))
 	let colunaEditar = $('<td>').addClass("editar");
 	let link = $("<a>").attr("href","/editar-filiado?id="+filiado.id).addClass("botao-editar");
 	let icone = $("<i>").addClass("small").addClass("material-icons").text("edit");
@@ -114,6 +115,7 @@ function novaLinha(filiado)
 	linha.append(colunaEmpresa);
 	linha.append(colunaCargo);
 	linha.append(colunaSituacao);
+	linha.append(colunaUltimaAtualizacao);
 	linha.append(colunaEditar);
 
 	return linha

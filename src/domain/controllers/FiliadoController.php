@@ -4,6 +4,7 @@ namespace Jp\SindicatoTrainees\domain\controllers;
 
 use DateTimeInterface;
 use DateTimeImmutable;
+use DateTimeZone;
 use Jp\SindicatoTrainees\infra\dao\FiliadoPdoDao;
 use Jp\SindicatoTrainees\infra\DBConnector;
 use Jp\SindicatoTrainees\domain\controllers\Controller;
@@ -72,8 +73,8 @@ class FiliadoController extends Controller
 		$rPdo = DBConnector::createConnection();
 		$rDao = new FiliadoPdoDao($rPdo);
 		$oFiliado = new Filiado(
-			$id, $nome, '', '', new DateTimeImmutable(), 0, $telefone,
-			$celular, new DateTimeImmutable(), $empresa, $cargo, $situacao
+			$id, $nome, null, null, null, null, $telefone,
+			$celular, new DateTimeImmutable(date('Y-m-d H:i:s'), new DateTimeZone('Brazil/East')), $empresa, $cargo, $situacao
 		);
 		if ($rDao->update($oFiliado)) {
 			return json_encode([

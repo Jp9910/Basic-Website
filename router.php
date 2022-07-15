@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+date_default_timezone_set('Brazil/East');
 
 function get($route, $path_to_include, $func=''){
 	if( $_SERVER['REQUEST_METHOD'] == 'GET' ){ route($route, $path_to_include, $func); }  

@@ -12,10 +12,10 @@ class Filiado implements JsonSerializable
 {
 	private ?int $id;
 	private string $sNome;
-	private string $sCPF;
-	private string $sRG;
-    private DateTimeInterface $oDataNascimento;
-    private int $iIdade;
+	private ?string $sCPF;
+	private ?string $sRG;
+    private ?DateTimeInterface $oDataNascimento;
+    private ?int $iIdade;
     private string $sTelefone;
     private string $sCelular;
     private DateTimeInterface $oDataUltimaAtualizacao;
@@ -26,10 +26,10 @@ class Filiado implements JsonSerializable
 	public function __construct(
 		?int $id,
 		string $sNome,
-		string $sCPF,
-		string $sRG,
-		DateTimeInterface $oDataNascimento,
-		int $iIdade,
+		?string $sCPF,
+		?string $sRG,
+		?DateTimeInterface $oDataNascimento,
+		?int $iIdade,
 		string $sTelefone,
 		string $sCelular,
 		DateTimeInterface $oDataUltimaAtualizacao,

@@ -21,11 +21,11 @@ $sResultadoJson = $oController->criarFiliado(
 	$dataPayload['nome'],
 	$dataPayload['CPF'],
 	$dataPayload['RG'],
-	new DateTimeImmutable($dataPayload['dataNascimento']),//, new DateTimeZone(DateTimeZone::AMERICA)),
+	new DateTimeImmutable($dataPayload['dataNascimento'], new DateTimeZone('Brazil/East')),
 	$dataPayload['idade'],
 	$dataPayload['telefone'],
 	$dataPayload['celular'],
-	new DateTimeImmutable(),
+	new DateTimeImmutable(date('Y-m-d H:i:s'), new DateTimeZone('Brazil/East')),
 	$dataPayload['empresa'],
 	$dataPayload['cargo'],
 	$dataPayload['situacao']
