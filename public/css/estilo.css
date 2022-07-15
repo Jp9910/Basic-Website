@@ -33,9 +33,9 @@ td {
 	display: table-cell;
 }
   
-td, th {
+/* td, th {
 	border: 1px solid #dddddd;
-}
+} */
 
 tfoot {
 	max-height: 100px;
