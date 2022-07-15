@@ -20,7 +20,7 @@ $sessao = $sessionManager->getSessao();
 	<div id="navbar"></div>
 
 	<header>
-		<div class="container center">
+		<div class="container center-screen">
 			<div class="row">
 				<img src="public/img/sample-logo-crop.png" alt="Banner principal"/>
 				<h2 class="titulo" id="titulo-home">Sindicato dos Trainees</h2>
