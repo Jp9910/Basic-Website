@@ -76,6 +76,14 @@ select {
 	display: block;
 }
 
+.center-screen {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	min-height: 100vh;
+  }
+
 /* #titulo-home {
 	max-width: 570px;
 } */

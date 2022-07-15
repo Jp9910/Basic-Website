@@ -8,13 +8,15 @@ use Jp\SindicatoTrainees\domain\controllers\FiliadoController;
 use Jp\SindicatoTrainees\infra\gerenciadores\RequestManager;
 
 $requestManager = RequestManager::getInstance();
+$request = $requestManager->getRequest();
 $request_body = file_get_contents('php://input');
 parse_str($request_body, $dataPayload);
-// foreach datapayload?
-	// $requestManager->setRequestVariable('nome', $dataPayload['nome']);
-	// $requestManager->setRequestVariable('CPF', $dataPayload['CPF']);
-
-// $request = $requestManager->getRequest();
+foreach ($dataPayload as $campo) {
+	if (empty($campo)){
+		header("HTTP/1.1 400 Não pode haver campos vazios");
+		exit();
+	}
+}
 
 $oController = new FiliadoController();
 $sResultadoJson = $oController->criarFiliado(

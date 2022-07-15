@@ -78,6 +78,11 @@ if ( isset($_SESSION['logado']) and $_SESSION['logado'] == true ) {
 	post('/filiado', 'src/api/filiado/post-filiado.php');
 	put('/filiado', 'src/api/filiado/put-filiado.php');
 	delete('/filiado', 'src/api/filiado/delete-filiado.php');
+
+// DEPENDENTE
+	// api
+	post('/dependente', 'src/api/dependente/post-dependente.php');
+	post('/dependentes', 'src/api/dependente/post-dependentes.php');
 }
 //chamar função: post('/criarUsuario', '', 'Jp\SindicatoTrainees\domain\controllers\UsuarioController::criarUsuario');
 

@@ -14,6 +14,16 @@ function adicionarFuncaoBotaoAdicionarFiliado()
 	$('#botao-enviar').click(function(e) {
 		e.preventDefault();
 		$('#botao-enviar').attr("disabled","true");
+		let qntDependentes = $('#qnt-dependentes').val();
+		let infoDependentes = []
+		for (let i=1; i <= qntDependentes; i++) {
+			nome = $(`#input-dependente-${i}-nome`).val();
+			dataNascimento = $(`#input-dependente-${i}-dataNascimento`).val();
+			parentesco = $(`#input-dependente-${i}-parentesco`).val();
+			flo_id = 1; //@TODO: Pegar o ID do filiado que vai ser inserido a seguir
+			infoDependentes.push({nome,dataNascimento,parentesco,flo_id});
+		}
+		console.log(infoDependentes)
 		$.ajax({
 			url: "filiado",
 			type: 'POST',
@@ -30,12 +40,14 @@ function adicionarFuncaoBotaoAdicionarFiliado()
 				situacao: $('#select-situacao').val()
 			},
 			success: function(result) {
+				cadastrarDependentesAjax(infoDependentes);
+				let info = $('#p-info');
 				$('#teste').append(result);
-				$('#p-info').text('Filiado "'+$('#input-nome').val()+'" adicionado.');
-				$('#p-info').show();
+				info.text('Filiado "'+$('#input-nome').val()+'" adicionado.');
+				info.show();
 				$('#spinner').show();
 				setTimeout(function(){
-					window.location.replace(window.location.href)
+					//window.location.replace(window.location.href)
 				}, 3000);
 			}
 		}).fail(function(jqXHR, textStatus, errorThrown){
@@ -143,5 +155,24 @@ function adicionarFuncaoBotaoRemoverDependente()
 		$(`#dependente-${valorQnt}`).remove()
 		valorQnt = parseInt(valorQnt) - 1;
 		qntDependentes.val(valorQnt);
+	});
+}
+
+function cadastrarDependentesAjax(infoDependentes)
+{
+	$.ajax({
+		url: "dependentes",
+		type: 'POST',
+		data: {infoDependentes},
+		success: function(result) {
+			let info = $('#p-info');
+			$('#teste').append(result);
+			info.text('Filiado "'+$('#input-nome').val()+'" adicionado.');
+			info.show();
+		}
+	}).fail(function(jqXHR, textStatus, errorThrown){
+		let info = $('#p-info');
+		info.text(textStatus + ". " + errorThrown);
+		info.show();
 	});
 }
