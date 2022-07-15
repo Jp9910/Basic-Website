@@ -16,49 +16,52 @@ $sessao = $sessionManager->getSessao();
 	<link rel="stylesheet" type="text/css" href="public/css/estilo.css">
 	<link rel="icon" href="public/img/indice.png">
 </head>
-<body class="teal accent-1">
+<body class="">
 	<div id="navbar"></div>
 
 	<header>
-		<div class="container">
-			<h2 class="titulo">Sindicato dos Trainees</h2>
-			<h5> 
-				<?php
-				//var_dump($_SESSION);
-				if (isset($sessao['mensagem']) and isset($sessao['logado'])) {
-					echo $sessao['mensagem'] . PHP_EOL;
-					echo "Bem-vindo, " . $sessao['usuario_nome'] . ". ";
-					$sessionManager->unsetSessionVariable('mensagem');
-					$sessionManager->unsetSessionVariable('tipo_mensagem');
-				}
-				?>
-				<br>
-				<?php
-				if (isset($sessao['logado'])) {
-					echo "Logado como ";
-					if ($sessao['usuario_isAdmin'])
-						echo "Administrador";
-					else
-						echo "Usuário comum";
-				}
-				?>
-				<br><br>
-				<p style="font-size: 16px;">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-					tempor incididunt ut labore et dolore magna aliqua.
-				</p>
-				<?php if (!isset($sessao['logado'])): ?>
-					<button
-						id="botao-logar"
-						type="button"
-						class="btn waves-effect waves-light"
-						onclick="location.href='login'"
-					>
-					Fazer login
-					<i class="material-icons right">arrow_right</i>
-				</button>
-				<?php endif; ?>
-			</h5>
+		<div class="container center">
+			<div class="row">
+				<img src="public/img/sample-logo-crop.png" alt="Banner principal"/>
+				<h2 class="titulo" id="titulo-home">Sindicato dos Trainees</h2>
+				<h5> 
+					<?php
+					//var_dump($_SESSION);
+					if (isset($sessao['mensagem']) and isset($sessao['logado'])) {
+						echo $sessao['mensagem'] . PHP_EOL;
+						echo "Bem-vindo, " . $sessao['usuario_nome'] . ". ";
+						$sessionManager->unsetSessionVariable('mensagem');
+						$sessionManager->unsetSessionVariable('tipo_mensagem');
+					}
+					?>
+					<br>
+					<?php
+					if (isset($sessao['logado'])) {
+						echo "Logado como ";
+						if ($sessao['usuario_isAdmin'])
+							echo "Administrador";
+						else
+							echo "Usuário comum";
+					}
+					?>
+					<p style="font-size: 16px;">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+						tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+					<br>
+					<?php if (!isset($sessao['logado'])): ?>
+						<button
+							id="botao-logar"
+							type="button"
+							class="btn waves-effect waves-light"
+							onclick="location.href='login'"
+						>
+						Fazer login
+						<i class="material-icons right">arrow_right</i>
+					</button>
+					<?php endif; ?>
+				</h5>
+			</div>
 		</div>
 	</header>
 
