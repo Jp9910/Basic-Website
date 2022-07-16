@@ -19,9 +19,9 @@ class Filiado implements JsonSerializable
     private string $sTelefone;
     private string $sCelular;
     private DateTimeInterface $oDataUltimaAtualizacao;
-	private int $iEmpresa;
-	private int $iCargo;
-	private int $iSituacao;
+	private int|string $iEmpresa;
+	private int|string $iCargo;
+	private int|string $iSituacao;
 
 	public function __construct(
 		?int $id,
@@ -33,9 +33,9 @@ class Filiado implements JsonSerializable
 		string $sTelefone,
 		string $sCelular,
 		DateTimeInterface $oDataUltimaAtualizacao,
-		int $iEmpresa,
-		int $iCargo,
-		int $iSituacao
+		int|string $iEmpresa,
+		int|string $iCargo,
+		int|string $iSituacao
 	){
 		$this->id = $id;
 		$this->sNome = $sNome;
@@ -114,17 +114,17 @@ class Filiado implements JsonSerializable
 		return $this->oDataUltimaAtualizacao;
 	}
 
-	public function empresa(): int
+	public function empresa(): int|string
 	{
 		return $this->iEmpresa;
 	}
 
-	public function cargo(): int
+	public function cargo(): int|string
 	{
 		return $this->iCargo;
 	}
 
-	public function situacao(): int
+	public function situacao(): int|string
 	{
 		return $this->iSituacao;
 	}

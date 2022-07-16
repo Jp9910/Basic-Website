@@ -27,9 +27,9 @@ function adicionarFuncaoBotaoEnviar()
 				nome: $('#input-nome').val(),
 				telefone: $('#input-telefone').val(),
 				celular: $('#input-celular').val(),
-				empresa: $('#input-empresa').val(),
-				cargo: $('#input-cargo').val(),
-				situacao: $('#input-situacao').val()
+				empresa: $('#select-empresa').val(),
+				cargo: $('#select-cargo').val(),
+				situacao: $('#select-situacao').val()
 			},
 			success: function(result) {
 				$('#teste').append(result);
