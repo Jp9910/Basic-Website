@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y vim iputils-ping net-tools
 
 RUN docker-php-ext-install pdo pdo_mysql
     
-RUN pecl uninstall xdebug && pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN a2enmod rewrite
 
