@@ -9,7 +9,9 @@ require_once 'vendor/autoload.php';
 
 // LOGIN
 	get('/login', 'public/views/login.php');
+	get('/login-visitante', 'public/views/login-visitante.php');
 	post('/criar-sessao', 'src/api/post-login.php');
+	post('/criar-sessao-visitante', 'src/api/post-login-visitante.php');
 	get('/logout', 'src/api/logout.php');
 
 // NAVBAR

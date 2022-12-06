@@ -10,7 +10,7 @@ $sessao = $sessionManager->getSessao();
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Login Sindicato Trainees</title>
+	<title>Login de visitantes</title>
 	<link rel="icon" href="public/img/indice.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="resources/libs/materialize/css/materialize.css"  media="screen,projection"/>
@@ -18,7 +18,7 @@ $sessao = $sessionManager->getSessao();
 </head>
 <body>
 	<div id="navbar"></div>
-	<h3 class="center">Sindicato dos Trainees - Login</h3>
+	<h3 class="center">Sindicato dos Trainees - Login Visitante</h3>
 	<br>
 	<div class="center">
 		<div class="center">
@@ -33,34 +33,19 @@ $sessao = $sessionManager->getSessao();
 				?>
 			</p>
 		</div>
-		<form class="col s12" action="/criar-sessao" method="post">
+		<form class="col s12" action="/criar-sessao-visitante" method="post">
 			<div class="row">
-				<div class="input-field col s3 offset-s4">
+				<div class="input-field col s2 offset-s5">
 					<i class="material-icons prefix">account_circle</i>
-					<input required id="first_name" name="login" type="text" class="validate">
-					<label for="first_name">Usuário</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="input-field col s3 offset-s4">
-					<i class="material-icons prefix">lock_outline</i>
-					<input required id="password" name="senha" type="password" class="validate">
-					<label for="password">Senha</label>
+					<input required placeholder="Digite seu nome" id="first_name" name="nome" type="text" class="validate">
+					<label for="first_name">Nome</label>
 				</div>
 			</div>
 			<div class="row">
 				<button type="submit" class="btn waves-effect waves-light">
-					Entrar
+					Entrar como visitante
 					<i class="material-icons right">arrow_forward</i>
 				</button>
-			</div>
-			<div class="row">
-				<a href="/login-visitante">
-					<button id="botao-visitante" type="button" class="btn waves-effect waves-light">
-						Entrar como visitante (wip)
-						<i class="material-icons right">visibility</i>
-					</button>
-				</a>
 			</div>
 		</form>
 	</div>

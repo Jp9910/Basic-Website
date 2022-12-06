@@ -99,6 +99,15 @@ class UsuarioController extends Controller
 		]);
 	}
 
+	public function loginVisitante(string $sNome): string
+	{
+		return json_encode([
+			'status' => 200,
+			'status_text' => 'Login efetuado com sucesso.',
+			'nome' => $sNome
+		]);
+	}
+
 	public function criarUsuario(string $sNome, string $sLogin, string $sSenha, int $isAdmin)
 	{
 		$sNome = filter_var($sNome, FILTER_SANITIZE_SPECIAL_CHARS);
