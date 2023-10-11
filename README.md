@@ -1,6 +1,6 @@
-# Sindicato dos Trainees
+# Basic Website
 
-Web application developed using PHP, HTML, JavaScript and MySQL. Done for learning purposes.
+Web application developed using PHP, HTML, JavaScript and MySQL (no frameworks). Features CRUD actions, registration and login. Done for learning purposes.
 
 Router (router.php) developed by [phprouter](https://github.com/phprouter) - <https://github.com/phprouter/main>
 
@@ -23,7 +23,7 @@ Router (router.php) developed by [phprouter](https://github.com/phprouter) - <ht
 - docs: Documentation files
 - public: Files that can be accessed by users
 - resources: Libs used
-- src: Server code
+- src: Server-side code
 
 ## Pages
 ### Home
