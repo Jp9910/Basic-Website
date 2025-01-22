@@ -55,3 +55,13 @@ Router (router.php) developed by [phprouter](https://github.com/phprouter) - <ht
 
 ### Edit affiliate
 ![Tela Editar Filiado](/docs/img/editar-filiado.png)
+
+
+
+## Setup
+
+Navigate to repository folder, then
+
+> docker composer up --build
+
+Website is hosted on port *80*, database admin on port *8080* and database on port *8081*
